@@ -734,7 +734,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <li><button onclick="showPage('money')" id="nav-money">Make Money</button></li>
     <li><button onclick="showPage('about')" id="nav-about">About</button></li>
     <li><button onclick="showPage('partners')" id="nav-partners">Partners</button></li>
-    <li><button onclick="showPage('admin')" id="nav-admin">Admin</button></li>
     <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
     <li><button onclick="showPage('home');setTimeout(()=>document.getElementById('picks').scrollIntoView({behavior:'smooth'}),80)" class="nav-cta">Top Picks</button></li>
   </ul>
@@ -752,7 +751,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
   <button onclick="showPage('money');toggleMenu()">Make Money Online</button>
   <button onclick="showPage('about');toggleMenu()">About</button>
   <button onclick="showPage('partners');toggleMenu()">Partner Program</button>
-  <button onclick="showPage('admin');toggleMenu()">Admin</button>
   <button onclick="showPage('contact');toggleMenu()">Contact</button>
   <button onclick="showPage('privacy');toggleMenu()">Legal</button>
 </div>
@@ -764,7 +762,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="popup-tag">Before You Go · Free</div>
     <div class="popup-title">GET THE <em>FULL</em> PICKS LIST</div>
     <p class="popup-sub">Our weekly digest of the best tools and products actually delivering results in 2026. No fluff, no spam. Just what works.</p>
-<form class="kit-custom-form" onsubmit="kitSubmit(event,this)">
+<form class="kit-custom-form" data-source="exit_popup" onsubmit="handleEmailSignup(event,this)">
   <div class="kit-fields">
     <input class="kit-email-input" name="email_address" aria-label="Email Address" placeholder="Your email address..." required type="email">
     <button type="submit" class="kit-submit-btn"><span>Get It Free</span></button>
@@ -781,7 +779,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <span class="sticky-text">Get our <span>free weekly picks</span> · tools that actually work</span>
   </div>
   <div class="sticky-form" style="flex:1;max-width:380px;">
-<form class="kit-custom-form" onsubmit="kitSubmit(event,this)">
+<form class="kit-custom-form" data-source="sticky_bar" onsubmit="handleEmailSignup(event,this)">
   <div class="kit-fields">
     <input class="kit-email-input" name="email_address" aria-label="Email Address" placeholder="Your email..." required type="email">
     <button type="submit" class="kit-submit-btn"><span>Subscribe</span></button>
@@ -1195,7 +1193,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <h2 class="section-title">STAY AHEAD OF THE <em>CURVE</em></h2>
     <p style="color:var(--mid);font-size:14px;line-height:1.7;font-weight:300;margin:0 auto 4px;">New products. Real reviews. Exclusive deals. Delivered free every week.</p>
     <div class="email-section-form" style="max-width:440px;margin:16px auto 0;">
-<form class="kit-custom-form" onsubmit="kitSubmit(event,this)">
+<form class="kit-custom-form" data-source="email_section" onsubmit="handleEmailSignup(event,this)">
   <div class="kit-fields">
     <input class="kit-email-input" name="email_address" aria-label="Email Address" placeholder="Your email address..." required type="email">
     <button type="submit" class="kit-submit-btn"><span>Get Free Picks</span></button>
@@ -3164,8 +3162,8 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
   </div>
 </div>
 
-<!-- =================== ADMIN PAGE =================== -->
-<div id="page-admin" class="page admin-page">
+<!-- =================== ADMIN PAGE ===================
+<div id="page-admin" class="page admin-page" style="display:none !important;">
   <div class="admin-shell">
     <div class="admin-top">
       <div>
@@ -3196,6 +3194,7 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
         <div class="admin-kpi"><strong id="kpi-apps">0</strong><span>Applications</span></div>
         <div class="admin-kpi"><strong id="kpi-partners">0</strong><span>Partners</span></div>
         <div class="admin-kpi"><strong id="kpi-clicks">0</strong><span>Clicks</span></div>
+        <div class="admin-kpi"><strong id="kpi-subscribers">0</strong><span>Subscribers</span></div>
       </div>
 
       <div class="admin-tabs">
@@ -3205,6 +3204,7 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
         <button class="admin-tab" onclick="showAdminTab('sales',this)">Sales</button>
         <button class="admin-tab" onclick="showAdminTab('promo',this)">Promo Kit</button>
         <button class="admin-tab" onclick="showAdminTab('messages',this)">Messages</button>
+        <button class="admin-tab" onclick="showAdminTab('subscribers',this)">Subscribers</button>
         <button class="admin-tab" onclick="adminSignOut()">Sign Out</button>
       </div>
 
@@ -3291,9 +3291,16 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
         <h2>Contact Messages</h2>
         <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Status</th></tr></thead><tbody id="admin-messages-body"></tbody></table></div>
       </div>
+
+      <div class="admin-panel" id="admin-subscribers">
+        <h2>Newsletter Subscribers</h2>
+        <div class="admin-note">All email captures from popup, sticky bar and weekly picks form are saved here.</div>
+        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Email</th><th>Source</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead><tbody id="admin-subscribers-body"></tbody></table></div>
+      </div>
     </div>
   </div>
 </div>
+-->
 
 <!-- FOOTER -->
 <footer>
@@ -3308,7 +3315,6 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
         <li><button onclick="showPage('home')">Home</button></li>
         <li><button onclick="showPage('about')">About</button></li>
         <li><button onclick="showPage('partners')">Partner Program</button></li>
-        <li><button onclick="showPage('admin')">Admin</button></li>
         <li><button onclick="showPage('contact')">Contact</button></li>
         <li><button onclick="showPage('privacy')">Legal</button></li>
       </ul>
@@ -3356,24 +3362,34 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
   </div>
 </footer>
 
+<script src="./config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// Email forms powered by Kit (ConvertKit)
+// Email forms stored in Supabase
 
-var SUPABASE_URL = 'https://ytqbciceeecimnwaaoxg.supabase.co';
-var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0cWJjaWNlZWVjaW1ud2Fhb3hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NjIzMTksImV4cCI6MjA5MzUzODMxOX0.TQWWhBWg-1p2zOeoR267WgARX3e1aOEGR19LBZY_WjQ';
-var ADMIN_EMAIL = 'mail2nswr@gmail.com';
+function readRuntimeConfig() {
+  var cfg = window.__PICKLIST_CONFIG__ || {};
+  var lsUrl = null;
+  var lsKey = null;
+  try {
+    lsUrl = localStorage.getItem('picklist.supabase.url');
+    lsKey = localStorage.getItem('picklist.supabase.anonKey');
+  } catch(e) {}
+  return {
+    SUPABASE_URL: cfg.SUPABASE_URL || lsUrl || '',
+    SUPABASE_ANON_KEY: cfg.SUPABASE_ANON_KEY || lsKey || ''
+  };
+}
+
+var RUNTIME_CONFIG = readRuntimeConfig();
+var SUPABASE_URL = RUNTIME_CONFIG.SUPABASE_URL;
+var SUPABASE_ANON_KEY = RUNTIME_CONFIG.SUPABASE_ANON_KEY;
 var db = null;
 var dbReady = false;
-var adminState = { products: [], applications: [], partners: [], clicks: [], sales: [], promo: [], messages: [] };
 
 function initSupabase() {
   dbReady = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase);
   if(dbReady) db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  var warning = document.getElementById('admin-config-warning');
-  if(warning) warning.style.display = dbReady ? 'none' : 'block';
-  var status = document.getElementById('admin-status');
-  if(status) status.textContent = dbReady ? 'Database connected' : 'Database not configured';
   return dbReady;
 }
 
@@ -3381,18 +3397,9 @@ async function verifySupabaseSchema() {
   if(!dbReady) initSupabase();
   if(!dbReady) return false;
   var result = await db.from('products').select('slug').limit(1);
-  var warning = document.getElementById('admin-config-warning');
-  var status = document.getElementById('admin-status');
   if(result.error) {
-    if(warning) {
-      warning.style.display = 'block';
-      warning.innerHTML = 'Supabase keys are connected, but the database tables are not installed yet. Open Supabase SQL Editor, run <code>supabase-schema.sql</code>, then refresh this page.';
-    }
-    if(status) status.textContent = 'Schema not installed';
     return false;
   }
-  if(warning) warning.style.display = 'none';
-  if(status) status.textContent = 'Database ready';
   return true;
 }
 
@@ -3701,55 +3708,44 @@ document.addEventListener('DOMContentLoaded', function() {
   if (inp) inp.addEventListener('keydown', function(e){ if(e.key==='Enter') runAiSuggest(); });
 });
 
-// EMAIL FORM SUBMIT — uses hidden iframe to POST to ConvertKit (bypasses CORS)
-var kitIframe = null;
-function kitSubmit(e, form) {
+async function handleEmailSignup(e, form) {
   e.preventDefault();
   var emailInput = form.querySelector('input[type="email"]');
   var btn = form.querySelector('button[type="submit"]');
   var email = emailInput.value.trim();
   if (!email) return;
   var origHTML = btn.innerHTML;
-  btn.innerHTML = '<span>Sending...</span>';
+  btn.innerHTML = '<span>Saving...</span>';
   btn.disabled = true;
-
-  // Remove old iframe if exists
-  if (kitIframe) kitIframe.parentNode && kitIframe.parentNode.removeChild(kitIframe);
-
-  // Create hidden iframe as the form target
-  kitIframe = document.createElement('iframe');
-  kitIframe.name = 'kit_iframe_' + Date.now();
-  kitIframe.style.display = 'none';
-  document.body.appendChild(kitIframe);
-
-  // Create a real form that targets the iframe
-  var postForm = document.createElement('form');
-  postForm.method = 'POST';
-  postForm.action = 'https://app.kit.com/forms/9391291/subscriptions';
-  postForm.target = kitIframe.name;
-  postForm.style.display = 'none';
-
-  var emailField = document.createElement('input');
-  emailField.type = 'hidden';
-  emailField.name = 'email_address';
-  emailField.value = email;
-  postForm.appendChild(emailField);
-
-  document.body.appendChild(postForm);
-  postForm.submit();
-  document.body.removeChild(postForm);
-
-  // Show success after short delay
-  setTimeout(function() {
-    btn.innerHTML = '<span>✓ You\'re in!</span>';
-    btn.style.background = '#22c55e';
-    emailInput.value = '';
+  if(!dbReady) initSupabase();
+  if(!dbReady) {
+    btn.innerHTML = '<span>Connect Supabase First</span>';
+    btn.style.background = '#ef4444';
     setTimeout(function() {
       btn.innerHTML = origHTML;
       btn.style.background = '';
       btn.disabled = false;
-    }, 3500);
-  }, 800);
+    }, 2600);
+    return;
+  }
+  var source = (form && form.getAttribute('data-source')) || 'website';
+  var result = await db.from('newsletter_subscribers').insert(
+    { email: email, source: source, status: 'active' }
+  );
+  var duplicate = result.error && result.error.code === '23505';
+  if(result.error && !duplicate) {
+    btn.innerHTML = '<span>Save Failed</span>';
+    btn.style.background = '#ef4444';
+  } else {
+    btn.innerHTML = '<span>✓ You\'re in!</span>';
+    btn.style.background = '#22c55e';
+    emailInput.value = '';
+  }
+  setTimeout(function() {
+    btn.innerHTML = origHTML;
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3200);
 }
 
 // Prevent clicks on links/buttons inside .tool-action from triggering the parent tool-card's showPage()
@@ -3757,212 +3753,11 @@ document.querySelectorAll('.tool-action').forEach(function(el) {
   el.addEventListener('click', function(e) { e.stopPropagation(); });
 });
 
-async function adminSendMagicLink(e) {
-  e.preventDefault();
-  if(!dbReady) initSupabase();
-  var btn = e.target.querySelector('button');
-  var old = btn.textContent;
-  if(!dbReady) {
-    btn.textContent = 'Connect Supabase First';
-    setTimeout(function(){btn.textContent = old;}, 2200);
-    return;
-  }
-  btn.textContent = 'Sending...';
-  var email = document.getElementById('admin-email').value.trim();
-  var result = await db.auth.signInWithOtp({
-    email: email,
-    options: { emailRedirectTo: window.location.origin + window.location.pathname + '?page=admin' }
-  });
-  btn.textContent = result.error ? 'Login Failed' : 'Check Your Email';
-  setTimeout(function(){btn.textContent = old;}, 3200);
-}
-
-async function adminSignOut() {
-  if(db) await db.auth.signOut();
-  document.getElementById('admin-login').style.display = 'block';
-  document.getElementById('admin-dashboard').style.display = 'none';
-  document.getElementById('admin-status').textContent = dbReady ? 'Signed out' : 'Database not configured';
-}
-
-async function checkAdminSession() {
-  if(!dbReady) initSupabase();
-  if(!dbReady) return;
-  var sessionResult = await db.auth.getSession();
-  var session = sessionResult.data && sessionResult.data.session;
-  var email = session && session.user && session.user.email;
-  if(email) {
-    document.getElementById('admin-login').style.display = 'none';
-    document.getElementById('admin-dashboard').style.display = 'block';
-    document.getElementById('admin-status').textContent = 'Signed in as ' + email;
-    await loadAdminData();
-  }
-}
-
-function showAdminTab(name, btn) {
-  document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
-  if(btn) btn.classList.add('active');
-  document.querySelectorAll('.admin-panel').forEach(function(p){p.classList.remove('active');});
-  var panel = document.getElementById('admin-' + name);
-  if(panel) panel.classList.add('active');
-}
-
-async function loadAdminData() {
-  if(!dbReady) return;
-  var tables = [
-    ['products','products'],
-    ['applications','partner_applications'],
-    ['partners','partners'],
-    ['clicks','referral_clicks'],
-    ['sales','partner_sales'],
-    ['promo','promo_assets'],
-    ['messages','contact_messages']
-  ];
-  for(var i=0;i<tables.length;i++) {
-    var res = await db.from(tables[i][1]).select('*').order('created_at', { ascending:false });
-    adminState[tables[i][0]] = res.data || [];
-  }
-  renderAdmin();
-}
-
-function renderAdmin() {
-  document.getElementById('kpi-products').textContent = adminState.products.length;
-  document.getElementById('kpi-apps').textContent = adminState.applications.length;
-  document.getElementById('kpi-partners').textContent = adminState.partners.length;
-  document.getElementById('kpi-clicks').textContent = adminState.clicks.length;
-  renderProductsAdmin();
-  renderApplicationsAdmin();
-  renderPartnersAdmin();
-  renderSalesAdmin();
-  renderPromoAdmin();
-  renderMessagesAdmin();
-}
-
-function renderProductsAdmin() {
-  var body = document.getElementById('admin-products-body');
-  body.innerHTML = adminState.products.map(function(p, i){
-    return '<tr><td><strong>' + escapeHtml(p.name) + '</strong><br>' + escapeHtml(p.slug) + '</td><td>' + escapeHtml(p.category_slug) + '</td><td>' + escapeHtml(p.rank) + '</td><td>' + escapeHtml(p.rating || '') + '</td><td class="admin-actions"><button class="admin-mini-btn" onclick="editAdminProduct(' + i + ')">Edit</button><button class="admin-mini-btn" onclick="deleteAdminRow(&quot;products&quot;,&quot;' + p.id + '&quot;)">Delete</button></td></tr>';
-  }).join('') || '<tr><td colspan="5"><div class="admin-empty">No products found.</div></td></tr>';
-}
-
-function renderApplicationsAdmin() {
-  var body = document.getElementById('admin-applications-body');
-  body.innerHTML = adminState.applications.map(function(a){
-    return '<tr><td><strong>' + escapeHtml(a.name) + '</strong><br>' + escapeHtml(a.fit_reason) + '</td><td>' + escapeHtml(a.email) + '</td><td>' + escapeHtml(a.main_channel) + '</td><td>' + escapeHtml(a.audience_size || '') + '</td><td>' + escapeHtml(a.status) + '</td><td class="admin-actions"><button class="admin-mini-btn" onclick="approveApplication(&quot;' + a.id + '&quot;)">Approve</button><button class="admin-mini-btn" onclick="updateApplicationStatus(&quot;' + a.id + '&quot;,&quot;reviewed&quot;)">Reviewed</button></td></tr>';
-  }).join('') || '<tr><td colspan="6"><div class="admin-empty">No partner applications yet.</div></td></tr>';
-}
-
-function renderPartnersAdmin() {
-  var body = document.getElementById('admin-partners-body');
-  body.innerHTML = adminState.partners.map(function(p, i){
-    var t = tierForReferrals(p.referral_count);
-    return '<tr><td><strong>' + escapeHtml(p.name) + '</strong><br>' + escapeHtml(p.email) + '</td><td>' + escapeHtml(p.code) + '</td><td>' + escapeHtml(p.tier || t.tier) + ' / ' + t.cut + '%</td><td>' + escapeHtml(p.referral_count || 0) + '</td><td class="admin-actions"><button class="admin-mini-btn" onclick="editAdminPartner(' + i + ')">Edit</button><button class="admin-mini-btn" onclick="deleteAdminRow(&quot;partners&quot;,&quot;' + p.id + '&quot;)">Delete</button></td></tr>';
-  }).join('') || '<tr><td colspan="5"><div class="admin-empty">No approved partners yet.</div></td></tr>';
-}
-
-function renderSalesAdmin() {
-  var body = document.getElementById('admin-sales-body');
-  body.innerHTML = adminState.sales.map(function(s){
-    return '<tr><td>' + escapeHtml(s.partner_code) + '</td><td>' + escapeHtml(s.product_slug || '') + '</td><td>$' + escapeHtml(s.our_commission) + '</td><td>$' + escapeHtml(s.partner_amount || '') + '</td><td>' + escapeHtml(s.status) + '</td></tr>';
-  }).join('') || '<tr><td colspan="5"><div class="admin-empty">No sales entered yet.</div></td></tr>';
-}
-
-function renderPromoAdmin() {
-  var body = document.getElementById('admin-promo-body');
-  body.innerHTML = adminState.promo.map(function(p, i){
-    return '<tr><td>' + escapeHtml(p.asset_type) + '</td><td><strong>' + escapeHtml(p.title) + '</strong></td><td>' + escapeHtml(String(p.body || '').slice(0,180)) + '</td><td class="admin-actions"><button class="admin-mini-btn" onclick="editAdminPromo(' + i + ')">Edit</button><button class="admin-mini-btn" onclick="deleteAdminRow(&quot;promo_assets&quot;,&quot;' + p.id + '&quot;)">Delete</button></td></tr>';
-  }).join('') || '<tr><td colspan="4"><div class="admin-empty">No promo assets found.</div></td></tr>';
-}
-
-function renderMessagesAdmin() {
-  var body = document.getElementById('admin-messages-body');
-  body.innerHTML = adminState.messages.map(function(m){
-    return '<tr><td><strong>' + escapeHtml(m.name) + '</strong></td><td>' + escapeHtml(m.email) + '</td><td>' + escapeHtml(m.subject || '') + '</td><td>' + escapeHtml(m.message) + '</td><td>' + escapeHtml(m.status) + '</td></tr>';
-  }).join('') || '<tr><td colspan="5"><div class="admin-empty">No messages yet.</div></td></tr>';
-}
-
-function fillForm(panelId, data) {
-  var form = document.querySelector('#' + panelId + ' form');
-  Object.keys(data).forEach(function(key){
-    var field = form.querySelector('[name="' + key + '"]');
-    if(field) field.value = data[key] == null ? '' : data[key];
-  });
-}
-
-function clearAdminForm(panelId) {
-  var form = document.querySelector('#' + panelId + ' form');
-  if(form) form.reset();
-  var id = form && form.querySelector('[name="id"]');
-  if(id) id.value = '';
-}
-
-function editAdminProduct(i) { fillForm('admin-products', adminState.products[i]); }
-function editAdminPartner(i) { fillForm('admin-partners-admin', adminState.partners[i]); }
-function editAdminPromo(i) { fillForm('admin-promo', adminState.promo[i]); }
-
-async function saveAdminProduct(e) {
-  e.preventDefault();
-  var data = getFormData(e.target);
-  data.rank = Number(data.rank || 999);
-  data.rating = data.rating ? Number(data.rating) : null;
-  data.status = 'approved';
-  data.is_active = true;
-  var id = data.id;
-  delete data.id;
-  var res = id ? await db.from('products').update(data).eq('id', id) : await db.from('products').insert(data);
-  if(!res.error) { clearAdminForm('admin-products'); await loadAdminData(); await loadPublicProducts(); }
-}
-
-async function saveAdminPartner(e) {
-  e.preventDefault();
-  var data = getFormData(e.target);
-  data.referral_count = Number(data.referral_count || 0);
-  data.tier = tierForReferrals(data.referral_count).tier;
-  var id = data.id;
-  delete data.id;
-  var res = id ? await db.from('partners').update(data).eq('id', id) : await db.from('partners').insert(data);
-  if(!res.error) { clearAdminForm('admin-partners-admin'); await loadAdminData(); }
-}
-
-async function saveAdminSale(e) {
-  e.preventDefault();
-  var data = getFormData(e.target);
-  data.our_commission = Number(data.our_commission || 0);
-  data.partner_cut_percent = Number(data.partner_cut_percent || 20);
-  var res = await db.from('partner_sales').insert(data);
-  if(!res.error) { e.target.reset(); await loadAdminData(); }
-}
-
-async function saveAdminPromo(e) {
-  e.preventDefault();
-  var data = getFormData(e.target);
-  data.sort_order = Number(data.sort_order || 0);
-  var id = data.id;
-  delete data.id;
-  var res = id ? await db.from('promo_assets').update(data).eq('id', id) : await db.from('promo_assets').insert(data);
-  if(!res.error) { clearAdminForm('admin-promo'); await loadAdminData(); }
-}
-
-async function updateApplicationStatus(id, status) {
-  await db.from('partner_applications').update({status:status}).eq('id', id);
-  await loadAdminData();
-}
-
-async function approveApplication(id) {
-  var app = adminState.applications.find(function(a){return a.id === id;});
-  if(!app) return;
-  var code = app.email.split('@')[0].replace(/[^a-zA-Z0-9_-]/g,'').toLowerCase();
-  await db.from('partners').upsert({name:app.name,email:app.email,code:code,status:'active',tier:'Starter',referral_count:0}, {onConflict:'email'});
-  await updateApplicationStatus(id, 'approved');
-}
-
-async function deleteAdminRow(table, id) {
-  if(!confirm('Delete this row?')) return;
-  await db.from(table).delete().eq('id', id);
-  await loadAdminData();
-}
+// Admin management logic removed from public site.
 
 // PAGE NAV
 function showPage(name) {
+  if(name === 'admin') name = 'home';
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   var target = document.getElementById(name) || document.getElementById('page-'+name) || document.getElementById('prod-'+name);
   if(!target) return;
@@ -3972,7 +3767,6 @@ function showPage(name) {
   if(nb) nb.classList.add('active');
   var sticky = document.getElementById('stickyBar');
   if(sticky) sticky.style.display = name === 'partners' ? 'none' : '';
-  if(name === 'admin') checkAdminSession();
   window.scrollTo({top:0,behavior:'instant'});
   setTimeout(function(){
     target.querySelectorAll('.reveal').forEach(function(el){
@@ -3984,7 +3778,11 @@ function showPage(name) {
 function showInitialPageFromUrl() {
   var params = new URLSearchParams(window.location.search);
   var requested = params.get('page') || (window.location.hash ? window.location.hash.slice(1) : '');
-  if(requested) showPage(requested.replace(/^page-/, ''));
+  if(requested) {
+    requested = requested.replace(/^page-/, '');
+    if(requested === 'admin') requested = 'home';
+    showPage(requested);
+  }
 }
 showInitialPageFromUrl();
 
@@ -4218,7 +4016,6 @@ document.addEventListener('DOMContentLoaded', function(){
   verifySupabaseSchema();
   loadPublicProducts();
   trackReferralClick();
-  checkAdminSession();
 });
 
 </script>

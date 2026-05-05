@@ -151,6 +151,15 @@ create table if not exists public.contact_messages (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.newsletter_subscribers (
+  id uuid primary key default gen_random_uuid(),
+  email text unique not null,
+  source text,
+  status text not null default 'active',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
 alter table public.profiles enable row level security;
 alter table public.categories enable row level security;
 alter table public.products enable row level security;
@@ -162,6 +171,7 @@ alter table public.referral_clicks enable row level security;
 alter table public.partner_sales enable row level security;
 alter table public.promo_assets enable row level security;
 alter table public.contact_messages enable row level security;
+alter table public.newsletter_subscribers enable row level security;
 
 drop policy if exists "admins manage profiles" on public.profiles;
 drop policy if exists "public read categories" on public.categories;
@@ -182,6 +192,8 @@ drop policy if exists "public read promo assets" on public.promo_assets;
 drop policy if exists "admins manage promo assets" on public.promo_assets;
 drop policy if exists "public create contact messages" on public.contact_messages;
 drop policy if exists "admins manage contact messages" on public.contact_messages;
+drop policy if exists "public create newsletter subscribers" on public.newsletter_subscribers;
+drop policy if exists "admins manage newsletter subscribers" on public.newsletter_subscribers;
 
 create policy "admins manage profiles" on public.profiles for all using (public.is_admin()) with check (public.is_admin());
 create policy "public read categories" on public.categories for select using (is_active = true);
@@ -202,6 +214,8 @@ create policy "public read promo assets" on public.promo_assets for select using
 create policy "admins manage promo assets" on public.promo_assets for all using (public.is_admin()) with check (public.is_admin());
 create policy "public create contact messages" on public.contact_messages for insert with check (true);
 create policy "admins manage contact messages" on public.contact_messages for all using (public.is_admin()) with check (public.is_admin());
+create policy "public create newsletter subscribers" on public.newsletter_subscribers for insert with check (true);
+create policy "admins manage newsletter subscribers" on public.newsletter_subscribers for all using (public.is_admin()) with check (public.is_admin());
 
 insert into public.categories (slug, name, sort_order) values
 ('ai', 'AI Tools', 1),

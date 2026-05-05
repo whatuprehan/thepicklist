@@ -1,0 +1,4 @@
+window.__PICKLIST_CONFIG__ = {
+  SUPABASE_URL: 'https://ytqbciceeecimnwaaoxg.supabase.co',
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0cWJjaWNlZWVjaW1ud2Fhb3hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NjIzMTksImV4cCI6MjA5MzUzODMxOX0.TQWWhBWg-1p2zOeoR267WgARX3e1aOEGR19LBZY_WjQ'
+};
