@@ -3360,8 +3360,8 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
 <script>
 // Email forms powered by Kit (ConvertKit)
 
-var SUPABASE_URL = '';
-var SUPABASE_ANON_KEY = '';
+var SUPABASE_URL = 'https://ytqbciceeecimnwaaoxg.supabase.co';
+var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0cWJjaWNlZWVjaW1ud2Fhb3hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NjIzMTksImV4cCI6MjA5MzUzODMxOX0.TQWWhBWg-1p2zOeoR267WgARX3e1aOEGR19LBZY_WjQ';
 var ADMIN_EMAIL = 'mail2nswr@gmail.com';
 var db = null;
 var dbReady = false;
@@ -3375,6 +3375,25 @@ function initSupabase() {
   var status = document.getElementById('admin-status');
   if(status) status.textContent = dbReady ? 'Database connected' : 'Database not configured';
   return dbReady;
+}
+
+async function verifySupabaseSchema() {
+  if(!dbReady) initSupabase();
+  if(!dbReady) return false;
+  var result = await db.from('products').select('slug').limit(1);
+  var warning = document.getElementById('admin-config-warning');
+  var status = document.getElementById('admin-status');
+  if(result.error) {
+    if(warning) {
+      warning.style.display = 'block';
+      warning.innerHTML = 'Supabase keys are connected, but the database tables are not installed yet. Open Supabase SQL Editor, run <code>supabase-schema.sql</code>, then refresh this page.';
+    }
+    if(status) status.textContent = 'Schema not installed';
+    return false;
+  }
+  if(warning) warning.style.display = 'none';
+  if(status) status.textContent = 'Database ready';
+  return true;
 }
 
 function getFormData(form) {
@@ -3428,7 +3447,10 @@ function compareRowHtml(p) {
 async function loadPublicProducts() {
   if(!initSupabase()) return;
   var result = await db.from('products').select('*').eq('is_active', true).eq('status', 'approved').order('rank', { ascending: true });
-  if(result.error || !result.data || !result.data.length) return;
+  if(result.error || !result.data || !result.data.length) {
+    verifySupabaseSchema();
+    return;
+  }
   var grid = document.querySelector('#picks .tools-grid');
   if(grid) {
     grid.innerHTML = result.data.map(productCardHtml).join('');
@@ -4193,6 +4215,7 @@ function quizReset() {
 
 document.addEventListener('DOMContentLoaded', function(){
   initSupabase();
+  verifySupabaseSchema();
   loadPublicProducts();
   trackReferralClick();
   checkAdminSession();
