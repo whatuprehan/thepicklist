@@ -200,6 +200,83 @@ section{padding:76px 60px;position:relative;}
 .faq-a.open{display:block;padding:14px 20px;}
 .faq-a p{color:var(--mid);font-size:13px;line-height:1.75;font-weight:300;}
 
+/* PARTNER PROGRAM */
+.partner-hero{min-height:calc(100vh - 98px);display:flex;align-items:center;background:var(--black);padding:118px 60px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.partner-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:74px 74px;opacity:0.8;}
+.partner-hero::after{content:'';position:absolute;right:-160px;top:80px;width:560px;height:560px;background:radial-gradient(ellipse,rgba(245,197,24,0.08),transparent 68%);pointer-events:none;}
+.partner-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) 430px;gap:48px;align-items:center;position:relative;z-index:1;width:100%;}
+.partner-kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--yborder);background:var(--ydim);color:var(--yellow);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;margin-bottom:24px;}
+.partner-kicker span{width:5px;height:5px;background:var(--yellow);border-radius:50%;animation:blink 1.5s infinite;}
+.partner-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,9vw,104px);line-height:0.9;letter-spacing:3px;margin-bottom:22px;}
+.partner-hero h1 em{color:var(--yellow);font-style:normal;}
+.partner-lede{color:var(--mid);font-size:16px;line-height:1.8;max-width:600px;font-weight:300;margin-bottom:24px;}
+.partner-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+.partner-proof-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);max-width:620px;}
+.partner-proof{padding:20px 22px;border-right:1px solid var(--border);}
+.partner-proof:last-child{border-right:none;}
+.partner-proof strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--yellow);line-height:1;}
+.partner-proof span{display:block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;color:var(--gray);margin-top:5px;}
+.partner-card{background:var(--dark);border:1px solid var(--yborder);padding:28px;position:relative;overflow:hidden;}
+.partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--yellow);}
+.partner-card-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:10px;}
+.partner-card-text{color:var(--mid);font-size:13px;line-height:1.7;font-weight:300;margin-bottom:18px;}
+.partner-card-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:18px 0 22px;}
+.partner-card-list li{display:flex;gap:9px;color:var(--white);font-size:13px;align-items:flex-start;}
+.partner-card-list li::before{content:'+';color:var(--yellow);font-family:'DM Mono',monospace;}
+.partner-section{background:var(--black);padding:76px 60px;border-bottom:1px solid var(--border);}
+.partner-section.alt{background:var(--dark);}
+.partner-wrap{max-width:1200px;margin:0 auto;}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:36px;}
+.tier-card{background:var(--dark);border:1px solid var(--border);padding:26px;transition:all 0.25s;position:relative;}
+.tier-card:hover{border-color:var(--yborder);transform:translateY(-3px);}
+.tier-card.featured{background:var(--dark2);border-color:var(--yborder);}
+.tier-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;}
+.tier-name{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;margin-bottom:8px;}
+.tier-cut{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;color:var(--yellow);line-height:1;margin-bottom:8px;}
+.tier-cut span{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--mid);text-transform:uppercase;}
+.tier-req{color:var(--white);font-size:13px;margin-bottom:18px;}
+.tier-card p{color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;}
+.kit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:36px;}
+.kit-panel{background:var(--dark);border:1px solid var(--border);padding:22px;min-height:100%;}
+.kit-panel.wide{grid-column:1/-1;}
+.kit-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
+.kit-title{font-family:'Bebas Neue',sans-serif;font-size:23px;letter-spacing:1.5px;}
+.copy-btn{background:transparent;border:1px solid var(--yborder);color:var(--yellow);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;padding:7px 10px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.copy-btn:hover{background:var(--yellow);color:var(--black);}
+.copy-box{background:var(--black);border:1px solid var(--border);padding:15px;color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;white-space:pre-line;min-height:118px;}
+.banner-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.banner-preview{border:1px solid var(--border);background:linear-gradient(135deg,#080808,#181818);min-height:150px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+.banner-preview::after{content:'';position:absolute;right:-54px;top:-54px;width:160px;height:160px;border:1px solid rgba(245,197,24,0.35);transform:rotate(22deg);}
+.banner-preview.small{min-height:110px;}
+.banner-brand{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);position:relative;z-index:1;}
+.banner-line{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:2px;line-height:0.95;position:relative;z-index:1;}
+.banner-line em{color:var(--yellow);font-style:normal;}
+.banner-cta{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;color:var(--black);background:var(--yellow);padding:6px 9px;width:fit-content;position:relative;z-index:1;}
+.link-builder{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:14px;}
+.link-builder input{background:var(--black);border:1px solid var(--border);color:var(--white);padding:12px 14px;font-family:'DM Mono',monospace;font-size:11px;min-width:0;}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:36px;}
+.step-card{background:var(--dark);border:1px solid var(--border);padding:22px;}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--yellow);line-height:1;margin-bottom:12px;}
+.step-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;margin-bottom:8px;}
+.step-card p{color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;}
+.partner-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+.partner-form .form-group.full{grid-column:1/-1;}
+.partner-fineprint{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:1px;color:var(--gray);text-transform:uppercase;line-height:1.6;margin-top:12px;}
+.rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:34px;}
+.rule-card{background:var(--dark2);border:1px solid var(--border);padding:20px;}
+.rule-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;margin-bottom:8px;}
+.rule-card p{color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;}
+
+@media(max-width:900px){
+  .partner-hero{padding:112px 18px 48px;}
+  .partner-hero-inner{grid-template-columns:1fr;gap:28px;}
+  .partner-proof-grid,.tier-grid,.steps-grid,.rules-grid{grid-template-columns:1fr;}
+  .partner-proof{border-right:none;border-bottom:1px solid var(--border);}
+  .partner-section{padding:56px 18px;}
+  .kit-grid,.banner-grid,.partner-form{grid-template-columns:1fr;}
+  .link-builder{grid-template-columns:1fr;}
+}
+
 /* CTA */
 .cta-section{background:var(--dark);border-top:1px solid var(--border);text-align:center;overflow:hidden;position:relative;padding:72px 60px;}
 .cta-section::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(245,197,24,0.06),transparent 70%);pointer-events:none;}
@@ -615,6 +692,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <li><button onclick="showPage('saas')" id="nav-saas">SaaS</button></li>
     <li><button onclick="showPage('money')" id="nav-money">Make Money</button></li>
     <li><button onclick="showPage('about')" id="nav-about">About</button></li>
+    <li><button onclick="showPage('partners')" id="nav-partners">Partners</button></li>
     <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
     <li><button onclick="showPage('home');setTimeout(()=>document.getElementById('picks').scrollIntoView({behavior:'smooth'}),80)" class="nav-cta">Top Picks</button></li>
   </ul>
@@ -631,6 +709,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
   <button onclick="showPage('saas');toggleMenu()">SaaS and Business</button>
   <button onclick="showPage('money');toggleMenu()">Make Money Online</button>
   <button onclick="showPage('about');toggleMenu()">About</button>
+  <button onclick="showPage('partners');toggleMenu()">Partner Program</button>
   <button onclick="showPage('contact');toggleMenu()">Contact</button>
   <button onclick="showPage('privacy');toggleMenu()">Legal</button>
 </div>
@@ -1637,6 +1716,240 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="inner-divider"></div>
     <button class="btn btn-yellow" onclick="showPage('contact')">Get In Touch</button>
   </div>
+</div>
+
+<!-- =================== PARTNER PROGRAM PAGE =================== -->
+<div id="page-partners" class="page">
+  <section class="partner-hero">
+    <div class="partner-hero-inner">
+      <div>
+        <div class="partner-kicker"><span></span>The Pick List Partner Program</div>
+        <h1>POST. SHARE.<br>EARN FROM <em>THE PICKS</em></h1>
+        <p class="partner-lede">A smooth affiliate program for creators, newsletter writers, niche site owners and operators who already talk about useful tools. We give you the links, angles, banners, posts and email copy. You share them with your audience.</p>
+        <div class="partner-actions">
+          <button class="btn btn-yellow" onclick="document.getElementById('partner-apply').scrollIntoView({behavior:'smooth'})">Apply To Partner</button>
+          <button class="btn btn-outline" onclick="document.getElementById('promo-kit').scrollIntoView({behavior:'smooth'})">Open Promo Kit</button>
+        </div>
+        <div class="partner-proof-grid">
+          <div class="partner-proof"><strong>20-40%</strong><span>Of our commission</span></div>
+          <div class="partner-proof"><strong>Free</strong><span>Promo kit included</span></div>
+          <div class="partner-proof"><strong>Fast</strong><span>Copy, post, share</span></div>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card-title">What Partners Get</div>
+        <p class="partner-card-text">Everything is designed so a partner can start promoting in minutes without writing from scratch.</p>
+        <ul class="partner-card-list">
+          <li>Unique tracking link format with UTM-ready share links.</li>
+          <li>Ready-made social posts for X, LinkedIn, Instagram and communities.</li>
+          <li>Banner creatives in square and wide formats.</li>
+          <li>Email templates for launch, follow-up and newsletter mentions.</li>
+          <li>Tier bumps as referral volume grows.</li>
+        </ul>
+        <button class="btn btn-yellow" onclick="document.getElementById('partner-link-builder').scrollIntoView({behavior:'smooth'})">Build My Link</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-section">
+    <div class="partner-wrap">
+      <div class="sec-head reveal">
+        <div class="section-label">Partner Tiers</div>
+        <h2 class="section-title">THE MORE YOU SEND, <em>THE MORE YOU KEEP</em></h2>
+        <p class="section-sub">Simple, transparent tiers based on confirmed referrals. Your cut is paid from The Pick List commission, so the buyer never pays extra.</p>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-card reveal">
+          <div class="tier-label">0 to 10 referrals</div>
+          <div class="tier-name">Starter</div>
+          <div class="tier-cut">20% <span>of our commission</span></div>
+          <div class="tier-req">Requirement: 0-10 confirmed referrals.</div>
+          <p>Perfect for new partners testing which products match their audience.</p>
+        </div>
+        <div class="tier-card featured reveal">
+          <div class="tier-label">11 to 50 referrals</div>
+          <div class="tier-name">Pro</div>
+          <div class="tier-cut">30% <span>of our commission</span></div>
+          <div class="tier-req">Requirement: 11-50 confirmed referrals.</div>
+          <p>Built for consistent creators, publishers and community owners who promote weekly.</p>
+        </div>
+        <div class="tier-card reveal">
+          <div class="tier-label">50+ referrals</div>
+          <div class="tier-name">Elite</div>
+          <div class="tier-cut">40% <span>of our commission</span></div>
+          <div class="tier-req">Requirement: 50+ confirmed referrals.</div>
+          <p>For partners who make The Pick List a serious revenue channel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-section alt">
+    <div class="partner-wrap">
+      <div class="sec-head reveal">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">A CLEAN SYSTEM FROM <em>LINK TO PAYOUT</em></h2>
+        <p class="section-sub">No complicated setup. Apply once, get your partner code, use the promo kit and track every referral by code.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal"><div class="step-num">01</div><h3>Apply</h3><p>Tell us where you share recommendations and what audience you serve.</p></div>
+        <div class="step-card reveal"><div class="step-num">02</div><h3>Get Code</h3><p>Receive your partner code and a tracking link format for your posts.</p></div>
+        <div class="step-card reveal"><div class="step-num">03</div><h3>Share Kit</h3><p>Copy a post, banner or email template and send people to The Pick List.</p></div>
+        <div class="step-card reveal"><div class="step-num">04</div><h3>Earn</h3><p>Qualified purchases through your referral unlock your tiered partner cut.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-section" id="promo-kit">
+    <div class="partner-wrap">
+      <div class="sec-head reveal">
+        <div class="section-label">Partner Promo Kit</div>
+        <h2 class="section-title">COPY, POST, SHARE, <em>DONE</em></h2>
+        <p class="section-sub">Ready-made assets partners can use immediately. Swap in your referral link, choose a product angle and publish.</p>
+      </div>
+      <div class="kit-grid">
+        <div class="kit-panel reveal">
+          <div class="kit-head"><div class="kit-title">X / Threads Post</div><button class="copy-btn" onclick="copyKit('social-x',this)">Copy</button></div>
+          <div class="copy-box" id="social-x">I found a shortcut for choosing better tools without wasting weeks testing random apps.
+
+The Pick List ranks proven AI, marketing, SaaS, wellness and make-money tools in one clean place.
+
+Start here: https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
+        </div>
+        <div class="kit-panel reveal">
+          <div class="kit-head"><div class="kit-title">LinkedIn Post</div><button class="copy-btn" onclick="copyKit('social-linkedin',this)">Copy</button></div>
+          <div class="copy-box" id="social-linkedin">Most people lose time comparing tools instead of using them.
+
+The Pick List does the filtering first: AI tools, funnel builders, SEO platforms, customer support software and digital income systems that are actually worth a look.
+
+If you want a cleaner starting point, browse the current list here:
+https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
+        </div>
+        <div class="kit-panel reveal">
+          <div class="kit-head"><div class="kit-title">Instagram Caption</div><button class="copy-btn" onclick="copyKit('social-ig',this)">Copy</button></div>
+          <div class="copy-box" id="social-ig">Stop guessing which tools are worth your time.
+
+The Pick List is a curated list of top-rated tools for creators, founders, marketers and online business builders.
+
+AI, funnels, SEO, support, content, wellness and money tools in one place.
+
+Link: https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
+        </div>
+        <div class="kit-panel reveal">
+          <div class="kit-head"><div class="kit-title">Community Post</div><button class="copy-btn" onclick="copyKit('social-community',this)">Copy</button></div>
+          <div class="copy-box" id="social-community">Useful resource for anyone comparing business tools:
+
+The Pick List curates recommended tools by category, including AI, funnels, SEO, customer support, content repurposing and online income programs.
+
+Good starting point if you want options without opening 20 tabs:
+https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
+        </div>
+        <div class="kit-panel wide reveal">
+          <div class="kit-head"><div class="kit-title">Email Templates</div><button class="copy-btn" onclick="copyKit('email-templates',this)">Copy All</button></div>
+          <div class="copy-box" id="email-templates">SUBJECT: My shortcut for finding better tools
+
+Hey,
+
+If you are comparing tools for your business, I found a clean starting point: The Pick List.
+
+It curates top-rated products across AI, marketing, SEO, SaaS, content, wellness and make-money categories, with direct links and short explanations of who each tool is best for.
+
+Browse it here:
+https://whatuprehan.github.io/thepicklist/?ref=YOURCODE
+
+--
+
+SUBJECT: Before you buy another tool
+
+Quick recommendation: check The Pick List before paying for your next app or program.
+
+It is built to save you from endless comparison tabs by showing strong picks by category and use case.
+
+Here is the list:
+https://whatuprehan.github.io/thepicklist/?ref=YOURCODE
+
+--
+
+SUBJECT: A resource worth bookmarking
+
+I am bookmarking this one.
+
+The Pick List keeps a curated collection of useful tools for entrepreneurs, creators and online operators. AI tools, funnel software, SEO platforms, support tools and more.
+
+Take a look:
+https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
+        </div>
+        <div class="kit-panel wide reveal">
+          <div class="kit-head"><div class="kit-title">Banner Images</div><button class="copy-btn" onclick="downloadPartnerBanners(this)">Download SVGs</button></div>
+          <div class="banner-grid">
+            <div class="banner-preview">
+              <div class="banner-brand">The Pick List</div>
+              <div class="banner-line">FIND THE <em>RIGHT TOOL</em> FASTER</div>
+              <div class="banner-cta">Browse Top Picks</div>
+            </div>
+            <div class="banner-preview">
+              <div class="banner-brand">Partner Share Creative</div>
+              <div class="banner-line">AI, FUNNELS, SEO, SAAS <em>RANKED</em></div>
+              <div class="banner-cta">Start Here</div>
+            </div>
+            <div class="banner-preview small">
+              <div class="banner-brand">The Pick List</div>
+              <div class="banner-line">STOP GUESSING. <em>PICK BETTER.</em></div>
+            </div>
+            <div class="banner-preview small">
+              <div class="banner-brand">Affiliate Ready</div>
+              <div class="banner-line">COPY. POST. <em>EARN.</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="kit-panel wide reveal" id="partner-link-builder">
+          <div class="kit-head"><div class="kit-title">Referral Link Builder</div><button class="copy-btn" onclick="copyPartnerLink(this)">Copy Link</button></div>
+          <p class="partner-card-text">Enter your partner code after approval. The link updates instantly so every post can use the same clean URL format.</p>
+          <div class="link-builder">
+            <input id="partner-code" type="text" placeholder="YOURCODE" oninput="buildPartnerLink()" maxlength="32">
+            <button class="btn btn-yellow" onclick="buildPartnerLink()">Build Link</button>
+          </div>
+          <div class="copy-box" id="partner-link-output" style="margin-top:10px;min-height:auto;">https://whatuprehan.github.io/thepicklist/?ref=YOURCODE&utm_source=partner&utm_medium=affiliate&utm_campaign=partner_program</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-section alt">
+    <div class="partner-wrap">
+      <div class="sec-head reveal">
+        <div class="section-label">Quality Rules</div>
+        <h2 class="section-title">BUILT FOR REAL TRUST, <em>NOT SPAM</em></h2>
+        <p class="section-sub">The best partners win because their audience trusts them. These rules protect that trust and keep the program clean.</p>
+      </div>
+      <div class="rules-grid">
+        <div class="rule-card reveal"><h3>Disclose Clearly</h3><p>Use a simple affiliate disclosure anywhere you share a partner link.</p></div>
+        <div class="rule-card reveal"><h3>No Fake Claims</h3><p>Do not promise income, medical results or guaranteed outcomes from any product.</p></div>
+        <div class="rule-card reveal"><h3>Send Real Traffic</h3><p>No bots, coupon abuse, paid search on brand terms or misleading redirects.</p></div>
+        <div class="rule-card reveal"><h3>Use Approved Assets</h3><p>Start with the promo kit, then customize copy without changing product facts.</p></div>
+        <div class="rule-card reveal"><h3>Monthly Review</h3><p>Referral counts and tier status are reviewed monthly after validation.</p></div>
+        <div class="rule-card reveal"><h3>Simple Payouts</h3><p>Payouts are handled after vendor commissions clear and refunds are accounted for.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-section" id="partner-apply">
+    <div class="partner-wrap">
+      <div class="sec-head reveal">
+        <div class="section-label">Apply</div>
+        <h2 class="section-title">BECOME A <em>PARTNER</em></h2>
+        <p class="section-sub">Tell us where you plan to promote The Pick List. This form confirms the flow on-site; connect it to your preferred form backend when you are ready to collect applications.</p>
+      </div>
+      <form class="contact-form partner-form reveal" onsubmit="handlePartnerApply(event)">
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Your name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label>Main Channel</label><input type="text" placeholder="Newsletter, YouTube, X, blog, community" required></div>
+        <div class="form-group"><label>Audience Size</label><input type="text" placeholder="Example: 5,000 newsletter readers"></div>
+        <div class="form-group full"><label>Why You Are A Fit</label><textarea placeholder="Tell us what you promote, who follows you and which categories match your audience." required></textarea></div>
+        <div class="form-group full"><button type="submit" class="btn btn-yellow" style="width:fit-content">Submit Partner Application</button><p class="partner-fineprint">Partner applications are reviewed for audience fit, disclosure quality and traffic source quality.</p></div>
+      </form>
+    </div>
+  </section>
 </div>
 
 <!-- =================== CONTACT PAGE =================== -->
@@ -2820,6 +3133,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
       <ul>
         <li><button onclick="showPage('home')">Home</button></li>
         <li><button onclick="showPage('about')">About</button></li>
+        <li><button onclick="showPage('partners')">Partner Program</button></li>
         <li><button onclick="showPage('contact')">Contact</button></li>
         <li><button onclick="showPage('privacy')">Legal</button></li>
       </ul>
@@ -2862,12 +3176,98 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
       <button onclick="showPage('privacy')">Privacy Policy</button>
       <button onclick="showPage('privacy')">Affiliate Disclaimer</button>
       <button onclick="showPage('privacy')">Earnings Disclaimer</button>
+      <button onclick="showPage('partners')">Partner Program</button>
     </div>
   </div>
 </footer>
 
 <script>
 // Email forms powered by Kit (ConvertKit)
+
+function copyTextToClipboard(text, btn) {
+  function done() {
+    if(!btn) return;
+    var old = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(function(){btn.textContent = old;}, 1600);
+  }
+  if(navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done).catch(function(){fallbackCopy(text);done();});
+  } else {
+    fallbackCopy(text);
+    done();
+  }
+}
+
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function copyKit(id, btn) {
+  var el = document.getElementById(id);
+  if(el) copyTextToClipboard(el.textContent.trim(), btn);
+}
+
+function buildPartnerLink() {
+  var input = document.getElementById('partner-code');
+  var output = document.getElementById('partner-link-output');
+  if(!input || !output) return;
+  var code = (input.value || 'YOURCODE').trim().replace(/[^a-zA-Z0-9_-]/g, '') || 'YOURCODE';
+  output.textContent = 'https://whatuprehan.github.io/thepicklist/?ref=' + encodeURIComponent(code) + '&utm_source=partner&utm_medium=affiliate&utm_campaign=partner_program';
+}
+
+function copyPartnerLink(btn) {
+  buildPartnerLink();
+  var output = document.getElementById('partner-link-output');
+  if(output) copyTextToClipboard(output.textContent.trim(), btn);
+}
+
+function partnerBannerSvg(title, subtitle, wide) {
+  var width = wide ? 1200 : 1080;
+  var height = wide ? 628 : 1080;
+  var safeTitle = title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var safeSub = subtitle.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '" viewBox="0 0 ' + width + ' ' + height + '"><rect width="100%" height="100%" fill="#080808"/><g opacity=".16" stroke="#F5C518" stroke-width="2"><path d="M' + (width-240) + ' 70l170 54-54 170-170-54z"/><path d="M' + (width-380) + ' ' + (height-260) + 'l250 80-80 250-250-80z"/></g><circle cx="' + (width-150) + '" cy="120" r="180" fill="#F5C518" opacity=".08"/><text x="64" y="86" fill="#F5C518" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="6">THE PICK LIST</text><text x="64" y="' + (wide ? 290 : 430) + '" fill="#F5F0E8" font-family="Arial Black, Impact, sans-serif" font-size="' + (wide ? 78 : 92) + '" font-weight="900">' + safeTitle + '</text><text x="64" y="' + (wide ? 382 : 548) + '" fill="#F5C518" font-family="Arial Black, Impact, sans-serif" font-size="' + (wide ? 70 : 82) + '" font-weight="900">' + safeSub + '</text><rect x="64" y="' + (height-150) + '" width="264" height="54" fill="#F5C518"/><text x="92" y="' + (height-115) + '" fill="#080808" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">BROWSE PICKS</text><text x="64" y="' + (height-58) + '" fill="#888888" font-family="Arial, sans-serif" font-size="20">whatuprehan.github.io/thepicklist</text></svg>';
+}
+
+function downloadSvg(name, svg) {
+  var blob = new Blob([svg], {type:'image/svg+xml'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function downloadPartnerBanners(btn) {
+  downloadSvg('thepicklist-banner-wide.svg', partnerBannerSvg('FIND THE RIGHT', 'TOOL FASTER', true));
+  downloadSvg('thepicklist-banner-square.svg', partnerBannerSvg('STOP GUESSING', 'PICK BETTER', false));
+  if(btn) {
+    var old = btn.textContent;
+    btn.textContent = 'Downloaded';
+    setTimeout(function(){btn.textContent = old;}, 1800);
+  }
+}
+
+function handlePartnerApply(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Application Sent';
+  btn.style.background = '#22c55e';
+  btn.style.color = '#fff';
+  setTimeout(function(){btn.textContent='Submit Partner Application';btn.style.background='';btn.style.color='';e.target.reset();}, 3200);
+}
 
 // ── AI SUGGESTER ──────────────────────────────────────────────────────────────
 var aiProducts = [
@@ -3055,6 +3455,8 @@ function showPage(name) {
   document.querySelectorAll('.nav-links button').forEach(function(b){b.classList.remove('active');});
   var nb = document.getElementById('nav-'+name);
   if(nb) nb.classList.add('active');
+  var sticky = document.getElementById('stickyBar');
+  if(sticky) sticky.style.display = name === 'partners' ? 'none' : '';
   window.scrollTo({top:0,behavior:'instant'});
   setTimeout(function(){
     target.querySelectorAll('.reveal').forEach(function(el){
@@ -3062,6 +3464,13 @@ function showPage(name) {
     });
   }, 80);
 }
+
+function showInitialPageFromUrl() {
+  var params = new URLSearchParams(window.location.search);
+  var requested = params.get('page') || (window.location.hash ? window.location.hash.slice(1) : '');
+  if(requested) showPage(requested.replace(/^page-/, ''));
+}
+showInitialPageFromUrl();
 
 function toggleMenu() {document.getElementById('mobileMenu').classList.toggle('open');}
 
