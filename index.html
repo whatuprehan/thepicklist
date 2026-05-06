@@ -27,15 +27,15 @@ nav{position:fixed;top:34px;left:0;right:0;z-index:1000;display:flex;align-items
 .logo-dot{width:7px;height:7px;background:var(--yellow);border-radius:50%;animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
 .nav-links{display:flex;align-items:center;gap:1px;list-style:none;}
-.nav-links button{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;padding:7px 9px;transition:color 0.2s;}
-.nav-links button:hover,.nav-links button.active{color:var(--yellow);}
+.nav-links a{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;padding:7px 9px;transition:color 0.2s;text-decoration:none;display:inline-block;}
+.nav-links a:hover,.nav-links a.active{color:var(--yellow);}
 .nav-cta{background:var(--yellow)!important;color:var(--black)!important;font-weight:500!important;padding:7px 15px!important;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
 .hamburger span{width:22px;height:2px;background:var(--white);}
 .mobile-menu{display:none;position:fixed;top:98px;left:0;right:0;background:rgba(8,8,8,0.99);border-bottom:1px solid var(--border);padding:20px;z-index:999;flex-direction:column;gap:2px;}
 .mobile-menu.open{display:flex;}
-.mobile-menu button{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:12px 0;text-align:left;border-bottom:1px solid var(--border);transition:color 0.2s;}
-.mobile-menu button:hover{color:var(--yellow);}
+.mobile-menu a{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:12px 0;text-align:left;border-bottom:1px solid var(--border);transition:color 0.2s;text-decoration:none;display:block;}
+.mobile-menu a:hover{color:var(--yellow);}
 
 /* EXIT POPUP */
 .popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;}
@@ -336,8 +336,8 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 .footer-bottom{border-top:1px solid var(--border);padding:14px 60px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
 .footer-copy{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--gray);text-transform:uppercase;}
 .footer-legal{display:flex;gap:14px;}
-.footer-legal button{background:none;border:none;color:var(--gray);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;}
-.footer-legal button:hover{color:var(--yellow);}
+.footer-legal a{background:none;border:none;color:var(--gray);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;text-decoration:none;}
+.footer-legal a:hover{color:var(--yellow);}
 
 /* INNER PAGES */
 .inner-page{padding:120px 60px 100px;max-width:800px;margin:0 auto;}
@@ -723,36 +723,36 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
 <!-- NAV -->
 <nav>
-  <a class="logo" onclick="showPage('home')"><span class="logo-dot"></span>THE PICK LIST</a>
+  <a class="logo" href="./"><span class="logo-dot"></span>THE PICK LIST</a>
   <ul class="nav-links">
-    <li><button onclick="showPage('home')" class="active" id="nav-home">Home</button></li>
-    <li><button onclick="showPage('ai')" id="nav-ai">AI Tools</button></li>
-    <li><button onclick="showPage('marketing')" id="nav-marketing">Marketing</button></li>
-    <li><button onclick="showPage('wellness')" id="nav-wellness">Wellness</button></li>
-    <li><button onclick="showPage('content')" id="nav-content">Content</button></li>
-    <li><button onclick="showPage('saas')" id="nav-saas">SaaS</button></li>
-    <li><button onclick="showPage('money')" id="nav-money">Make Money</button></li>
-    <li><button onclick="showPage('about')" id="nav-about">About</button></li>
-    <li><button onclick="showPage('partners')" id="nav-partners">Partners</button></li>
-    <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
-    <li><button onclick="showPage('home');setTimeout(()=>document.getElementById('picks').scrollIntoView({behavior:'smooth'}),80)" class="nav-cta">Top Picks</button></li>
+    <li><a href="./" class="active" id="nav-home">Home</a></li>
+    <li><a href="./ai-tools.html" id="nav-ai">AI Tools</a></li>
+    <li><a href="./marketing.html" id="nav-marketing">Marketing</a></li>
+    <li><a href="./wellness.html" id="nav-wellness">Wellness</a></li>
+    <li><a href="./content.html" id="nav-content">Content</a></li>
+    <li><a href="./saas.html" id="nav-saas">SaaS</a></li>
+    <li><a href="./make-money.html" id="nav-money">Make Money</a></li>
+    <li><a href="./about.html" id="nav-about">About</a></li>
+    <li><a href="./partners.html" id="nav-partners">Partners</a></li>
+    <li><a href="./contact.html" id="nav-contact">Contact</a></li>
+    <li><a href="./#picks" class="nav-cta">Top Picks</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <button onclick="showPage('home');toggleMenu()">Home</button>
-  <button onclick="showPage('ai');toggleMenu()">AI Tools</button>
-  <button onclick="showPage('marketing');toggleMenu()">Marketing and Funnels</button>
-  <button onclick="showPage('wellness');toggleMenu()">Wellness and Health</button>
-  <button onclick="showPage('content');toggleMenu()">Content Creation</button>
-  <button onclick="showPage('saas');toggleMenu()">SaaS and Business</button>
-  <button onclick="showPage('money');toggleMenu()">Make Money Online</button>
-  <button onclick="showPage('about');toggleMenu()">About</button>
-  <button onclick="showPage('partners');toggleMenu()">Partner Program</button>
-  <button onclick="showPage('contact');toggleMenu()">Contact</button>
-  <button onclick="showPage('privacy');toggleMenu()">Legal</button>
+  <a href="./">Home</a>
+  <a href="./ai-tools.html">AI Tools</a>
+  <a href="./marketing.html">Marketing and Funnels</a>
+  <a href="./wellness.html">Wellness and Health</a>
+  <a href="./content.html">Content Creation</a>
+  <a href="./saas.html">SaaS and Business</a>
+  <a href="./make-money.html">Make Money Online</a>
+  <a href="./about.html">About</a>
+  <a href="./partners.html">Partner Program</a>
+  <a href="./contact.html">Contact</a>
+  <a href="./legal.html">Legal</a>
 </div>
 
 <!-- EXIT POPUP -->
@@ -3312,22 +3312,22 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
     <div class="footer-col">
       <div class="footer-col-title">Navigate</div>
       <ul>
-        <li><button onclick="showPage('home')">Home</button></li>
-        <li><button onclick="showPage('about')">About</button></li>
-        <li><button onclick="showPage('partners')">Partner Program</button></li>
-        <li><button onclick="showPage('contact')">Contact</button></li>
-        <li><button onclick="showPage('privacy')">Legal</button></li>
+        <li><a href="./">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./partners.html">Partner Program</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./legal.html">Legal</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Categories</div>
       <ul>
-        <li><button onclick="showPage('ai')">AI Tools</button></li>
-        <li><button onclick="showPage('marketing')">Marketing</button></li>
-        <li><button onclick="showPage('wellness')">Wellness</button></li>
-        <li><button onclick="showPage('content')">Content</button></li>
-        <li><button onclick="showPage('saas')">SaaS</button></li>
-        <li><button onclick="showPage('money')">Make Money</button></li>
+        <li><a href="./ai-tools.html">AI Tools</a></li>
+        <li><a href="./marketing.html">Marketing</a></li>
+        <li><a href="./wellness.html">Wellness</a></li>
+        <li><a href="./content.html">Content</a></li>
+        <li><a href="./saas.html">SaaS</a></li>
+        <li><a href="./make-money.html">Make Money</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -3354,10 +3354,10 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 The Pick List — Independent Reviews You Can Trust</div>
     <div class="footer-legal">
-      <button onclick="showPage('privacy')">Privacy Policy</button>
-      <button onclick="showPage('privacy')">Affiliate Disclaimer</button>
-      <button onclick="showPage('privacy')">Earnings Disclaimer</button>
-      <button onclick="showPage('partners')">Partner Program</button>
+      <a href="./legal.html">Privacy Policy</a>
+      <a href="./legal.html">Affiliate Disclaimer</a>
+      <a href="./legal.html">Earnings Disclaimer</a>
+      <a href="./partners.html">Partner Program</a>
     </div>
   </div>
 </footer>
@@ -3762,7 +3762,7 @@ function showPage(name) {
   var target = document.getElementById(name) || document.getElementById('page-'+name) || document.getElementById('prod-'+name);
   if(!target) return;
   target.classList.add('active');
-  document.querySelectorAll('.nav-links button').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.nav-links a').forEach(function(b){b.classList.remove('active');});
   var nb = document.getElementById('nav-'+name);
   if(nb) nb.classList.add('active');
   var sticky = document.getElementById('stickyBar');
