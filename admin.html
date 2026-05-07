@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - The Pick List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #000;
+    }
+
+    .auth-section {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #0066cc;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0052a3;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c82333;
+    }
+
+    .status-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .status-item:last-child {
+      border-bottom: none;
+    }
+
+    .status-label {
+      font-weight: 600;
+      color: #555;
+    }
+
+    .status-value {
+      font-family: 'Courier New', monospace;
+      color: #0066cc;
+      word-break: break-all;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .badge-success {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .badge-danger {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .badge-warning {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .badge-info {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+
+    .test-section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .test-section h2 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #000;
+    }
+
+    .test-result {
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .test-result.success {
+      background: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+
+    .test-result.error {
+      background: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+
+    .loading {
+      display: inline-block;
+      color: #0066cc;
+    }
+
+    .loading::after {
+      content: '.';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60% { content: '...'; }
+      80%, 100% { content: ''; }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      border-left: 4px solid #0066cc;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔐 Admin Panel</h1>
+      <div class="auth-section">
+        <span id="user-email" style="font-weight: 600;"></span>
+        <button id="logout-btn" class="btn-danger hidden">Sign Out</button>
+        <button id="login-btn" class="btn-primary hidden">Sign In</button>
+      </div>
+    </header>
+
+    <div id="auth-required" class="hidden">
+      <div class="info-box">
+        ⚠️ You must sign in to access the admin panel. Click "Sign In" above.
+      </div>
+    </div>
+
+    <div id="admin-content" class="hidden">
+      <!-- Status Box -->
+      <div class="status-box">
+        <h2 style="margin-bottom: 15px;">Connection Status</h2>
+        <div class="status-item">
+          <span class="status-label">Supabase URL</span>
+          <span class="status-value" id="status-url"></span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">User ID</span>
+          <span class="status-value" id="status-uid"></span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Email</span>
+          <span class="status-value" id="status-email"></span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Admin Status</span>
+          <span id="status-admin">
+            <span class="loading">Checking</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Test Queries -->
+      <div class="test-section">
+        <h2>Database Tests</h2>
+        <button class="btn-primary" onclick="testGetCategories()">Test: Fetch Categories</button>
+        <button class="btn-primary" onclick="testGetProducts()">Test: Fetch Products</button>
+        <button class="btn-primary" onclick="testAdminCheck()">Test: Check Admin Status</button>
+        <div id="test-output" class="test-result hidden"></div>
+      </div>
+
+      <div id="not-admin" class="hidden">
+        <div class="info-box" style="background: #f8d7da; border-left-color: #dc3545; color: #721c24;">
+          ❌ You are NOT an admin. The `is_admin()` function is not recognizing you. 
+          <br><br>
+          <strong>Next step:</strong> The Supabase agent needs to fix the `is_admin()` function. 
+          It likely needs to use `auth.uid()` instead of `auth.jwt()->>'email'`.
+        </div>
+      </div>
+
+      <div id="is-admin" class="hidden">
+        <div class="info-box" style="background: #d4edda; border-left-color: #28a745; color: #155724;">
+          ✅ You ARE an admin! Supabase is working correctly. Your site is ready for admin features.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+
+  <script>
+    // Initialize Supabase
+    const supabaseUrl = window.__PICKLIST_CONFIG__.SUPABASE_URL;
+    const supabaseKey = window.__PICKLIST_CONFIG__.SUPABASE_ANON_KEY;
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // DOM Elements
+    const userEmailEl = document.getElementById('user-email');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const authRequired = document.getElementById('auth-required');
+    const adminContent = document.getElementById('admin-content');
+    const notAdminBox = document.getElementById('not-admin');
+    const isAdminBox = document.getElementById('is-admin');
+    const testOutput = document.getElementById('test-output');
+
+    // Initialize
+    initializeAuth();
+
+    async function initializeAuth() {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (session) {
+        handleUserSignedIn(session);
+      } else {
+        handleUserSignedOut();
+      }
+
+      // Listen for auth changes
+      supabase.auth.onAuthStateChange((event, session) => {
+        if (session) {
+          handleUserSignedIn(session);
+        } else {
+          handleUserSignedOut();
+        }
+      });
+    }
+
+    function handleUserSignedIn(session) {
+      userEmailEl.textContent = session.user.email;
+      loginBtn.classList.add('hidden');
+      logoutBtn.classList.remove('hidden');
+      authRequired.classList.add('hidden');
+      adminContent.classList.remove('hidden');
+
+      // Update status
+      document.getElementById('status-url').textContent = supabaseUrl;
+      document.getElementById('status-uid').textContent = session.user.id;
+      document.getElementById('status-email').textContent = session.user.email;
+
+      // Check admin status
+      checkAdminStatus();
+    }
+
+    function handleUserSignedOut() {
+      userEmailEl.textContent = '';
+      loginBtn.classList.remove('hidden');
+      logoutBtn.classList.add('hidden');
+      authRequired.classList.remove('hidden');
+      adminContent.classList.add('hidden');
+    }
+
+    async function checkAdminStatus() {
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('email', (await supabase.auth.getUser()).data.user.email)
+          .single();
+
+        if (error) {
+          document.getElementById('status-admin').innerHTML = `
+            <span class="badge badge-danger">Error: ${error.message}</span>
+          `;
+          notAdminBox.classList.remove('hidden');
+          isAdminBox.classList.add('hidden');
+        } else if (data && data.role === 'admin') {
+          document.getElementById('status-admin').innerHTML = `
+            <span class="badge badge-success">✓ ADMIN</span>
+          `;
+          isAdminBox.classList.remove('hidden');
+          notAdminBox.classList.add('hidden');
+        } else {
+          document.getElementById('status-admin').innerHTML = `
+            <span class="badge badge-warning">Not Admin</span>
+          `;
+          notAdminBox.classList.remove('hidden');
+          isAdminBox.classList.add('hidden');
+        }
+      } catch (err) {
+        console.error('Error checking admin status:', err);
+        document.getElementById('status-admin').innerHTML = `
+          <span class="badge badge-danger">Error: ${err.message}</span>
+        `;
+        notAdminBox.classList.remove('hidden');
+        isAdminBox.classList.add('hidden');
+      }
+    }
+
+    // Auth handlers
+    loginBtn.addEventListener('click', async () => {
+      const email = prompt('Enter your email:');
+      if (!email) return;
+
+      const { error } = await supabase.auth.signInWithOtp({ email });
+      if (error) {
+        alert('Error: ' + error.message);
+      } else {
+        alert('Check your email for the sign-in link!');
+      }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+    });
+
+    // Test functions
+    async function testGetCategories() {
+      showOutput('Fetching categories...');
+      try {
+        const { data, error } = await supabase
+          .from('categories')
+          .select('*')
+          .order('sort_order');
+
+        if (error) {
+          showOutput(`Error: ${error.message}`, 'error');
+        } else {
+          showOutput(`✓ Success! Found ${data.length} categories:\n\n${JSON.stringify(data, null, 2)}`, 'success');
+        }
+      } catch (err) {
+        showOutput(`Error: ${err.message}`, 'error');
+      }
+    }
+
+    async function testGetProducts() {
+      showOutput('Fetching products...');
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .select('slug, name, rating')
+          .limit(5);
+
+        if (error) {
+          showOutput(`Error: ${error.message}`, 'error');
+        } else {
+          showOutput(`✓ Success! Found ${data.length} products:\n\n${JSON.stringify(data, null, 2)}`, 'success');
+        }
+      } catch (err) {
+        showOutput(`Error: ${err.message}`, 'error');
+      }
+    }
+
+    async function testAdminCheck() {
+      showOutput('Checking admin privileges...');
+      try {
+        // Try to query admin-only data
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('*');
+
+        if (error) {
+          if (error.message.includes('permission')) {
+            showOutput(`❌ Admin check failed - Permission denied. Your RLS policy is blocking you.\n\nError: ${error.message}`, 'error');
+          } else {
+            showOutput(`Error: ${error.message}`, 'error');
+          }
+        } else {
+          showOutput(`✓ Success! You have admin access to profiles:\n\n${JSON.stringify(data, null, 2)}`, 'success');
+        }
+      } catch (err) {
+        showOutput(`Error: ${err.message}`, 'error');
+      }
+    }
+
+    function showOutput(text, type = 'info') {
+      testOutput.textContent = text;
+      testOutput.classList.remove('hidden', 'success', 'error');
+      if (type) testOutput.classList.add(type);
+    }
+  </script>
+</body>
+</html>
