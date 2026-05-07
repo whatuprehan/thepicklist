@@ -27,15 +27,16 @@ nav{position:fixed;top:34px;left:0;right:0;z-index:1000;display:flex;align-items
 .logo-dot{width:7px;height:7px;background:var(--yellow);border-radius:50%;animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
 .nav-links{display:flex;align-items:center;gap:1px;list-style:none;}
-.nav-links a{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;padding:7px 9px;transition:color 0.2s;text-decoration:none;display:inline-block;}
-.nav-links a:hover,.nav-links a.active{color:var(--yellow);}
+.nav-links button{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;padding:7px 9px;transition:color 0.2s;}
+.nav-links button:hover,.nav-links button.active{color:var(--yellow);}
 .nav-cta{background:var(--yellow)!important;color:var(--black)!important;font-weight:500!important;padding:7px 15px!important;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
 .hamburger span{width:22px;height:2px;background:var(--white);}
 .mobile-menu{display:none;position:fixed;top:98px;left:0;right:0;background:rgba(8,8,8,0.99);border-bottom:1px solid var(--border);padding:20px;z-index:999;flex-direction:column;gap:2px;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:12px 0;text-align:left;border-bottom:1px solid var(--border);transition:color 0.2s;text-decoration:none;display:block;}
-.mobile-menu a:hover{color:var(--yellow);}
+.mobile-menu button{background:none;border:none;color:var(--mid);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:12px 0;text-align:left;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mobile-menu button:hover{color:var(--yellow);}
+.mobile-menu button.active{color:var(--yellow);}
 
 /* EXIT POPUP */
 .popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;}
@@ -117,7 +118,7 @@ section{padding:76px 60px;position:relative;}
 /* TOOL CARDS */
 .tools-wrap{max-width:1200px;margin:0 auto;width:100%;}
 .tools-grid{display:flex;flex-direction:column;gap:2px;}
-.tool-card{background:var(--dark);border:1px solid var(--border);display:grid;grid-template-columns:52px 1fr;align-items:start;gap:16px;padding:22px 28px;transition:all 0.25s;position:relative;overflow:hidden;text-decoration:none;color:inherit;cursor:pointer;}
+.tool-card{background:var(--dark);border:1px solid rgba(255,255,255,0.10);display:grid;grid-template-columns:52px 1fr;align-items:start;gap:16px;padding:22px 28px;transition:all 0.25s;position:relative;overflow:hidden;text-decoration:none;color:inherit;cursor:pointer;}
 .tool-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--yellow);transform:scaleY(0);transform-origin:bottom;transition:transform 0.3s;}
 .tool-card:hover{background:var(--dark2);border-color:var(--yborder);transform:translateX(3px);}
 .tool-card:hover::before{transform:scaleY(1);}
@@ -128,7 +129,10 @@ section{padding:76px 60px;position:relative;}
 .b-blue{background:var(--blue);color:#fff;}
 .b-green{background:var(--green);color:#000;}
 .b-purple{background:#8b5cf6;color:#fff;}
-.tool-num{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--dark3);line-height:1;user-select:none;transition:color 0.25s;}
+.tool-num{font-family:'Bebas Neue',sans-serif;font-size:34px;color:rgba(255,255,255,0.08);line-height:1;user-select:none;transition:color 0.25s;}
+.tool-num .tn-digit{color:var(--yellow);opacity:0.75;}
+.tool-card:hover .tool-num{color:rgba(255,255,255,0.05);}
+.tool-card:hover .tool-num .tn-digit{opacity:1;}
 .tool-card:hover .tool-num{color:rgba(245,197,24,0.1);}
 .tool-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;margin-bottom:4px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;line-height:1.1;}
 .tool-tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;background:var(--ydim);border:1px solid var(--yborder);color:var(--yellow);padding:2px 7px;}
@@ -200,124 +204,6 @@ section{padding:76px 60px;position:relative;}
 .faq-a.open{display:block;padding:14px 20px;}
 .faq-a p{color:var(--mid);font-size:13px;line-height:1.75;font-weight:300;}
 
-/* PARTNER PROGRAM */
-.partner-hero{min-height:calc(100vh - 98px);display:flex;align-items:center;background:var(--black);padding:118px 60px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.partner-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:74px 74px;opacity:0.8;}
-.partner-hero::after{content:'';position:absolute;right:-160px;top:80px;width:560px;height:560px;background:radial-gradient(ellipse,rgba(245,197,24,0.08),transparent 68%);pointer-events:none;}
-.partner-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) 430px;gap:48px;align-items:center;position:relative;z-index:1;width:100%;}
-.partner-kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--yborder);background:var(--ydim);color:var(--yellow);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;margin-bottom:24px;}
-.partner-kicker span{width:5px;height:5px;background:var(--yellow);border-radius:50%;animation:blink 1.5s infinite;}
-.partner-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,9vw,104px);line-height:0.9;letter-spacing:3px;margin-bottom:22px;}
-.partner-hero h1 em{color:var(--yellow);font-style:normal;}
-.partner-lede{color:var(--mid);font-size:16px;line-height:1.8;max-width:600px;font-weight:300;margin-bottom:24px;}
-.partner-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
-.partner-proof-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);max-width:620px;}
-.partner-proof{padding:20px 22px;border-right:1px solid var(--border);}
-.partner-proof:last-child{border-right:none;}
-.partner-proof strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--yellow);line-height:1;}
-.partner-proof span{display:block;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;color:var(--gray);margin-top:5px;}
-.partner-card{background:var(--dark);border:1px solid var(--yborder);padding:28px;position:relative;overflow:hidden;}
-.partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--yellow);}
-.partner-card-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:10px;}
-.partner-card-text{color:var(--mid);font-size:13px;line-height:1.7;font-weight:300;margin-bottom:18px;}
-.partner-card-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:18px 0 22px;}
-.partner-card-list li{display:flex;gap:9px;color:var(--white);font-size:13px;align-items:flex-start;}
-.partner-card-list li::before{content:'+';color:var(--yellow);font-family:'DM Mono',monospace;}
-.partner-section{background:var(--black);padding:76px 60px;border-bottom:1px solid var(--border);}
-.partner-section.alt{background:var(--dark);}
-.partner-wrap{max-width:1200px;margin:0 auto;}
-.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:36px;}
-.tier-card{background:var(--dark);border:1px solid var(--border);padding:26px;transition:all 0.25s;position:relative;}
-.tier-card:hover{border-color:var(--yborder);transform:translateY(-3px);}
-.tier-card.featured{background:var(--dark2);border-color:var(--yborder);}
-.tier-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;}
-.tier-name{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;margin-bottom:8px;}
-.tier-cut{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;color:var(--yellow);line-height:1;margin-bottom:8px;}
-.tier-cut span{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--mid);text-transform:uppercase;}
-.tier-req{color:var(--white);font-size:13px;margin-bottom:18px;}
-.tier-card p{color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;}
-.kit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:36px;}
-.kit-panel{background:var(--dark);border:1px solid var(--border);padding:22px;min-height:100%;}
-.kit-panel.wide{grid-column:1/-1;}
-.kit-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
-.kit-title{font-family:'Bebas Neue',sans-serif;font-size:23px;letter-spacing:1.5px;}
-.copy-btn{background:transparent;border:1px solid var(--yborder);color:var(--yellow);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;padding:7px 10px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
-.copy-btn:hover{background:var(--yellow);color:var(--black);}
-.copy-box{background:var(--black);border:1px solid var(--border);padding:15px;color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;white-space:pre-line;min-height:118px;}
-.banner-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.banner-preview{border:1px solid var(--border);background:linear-gradient(135deg,#080808,#181818);min-height:150px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
-.banner-preview::after{content:'';position:absolute;right:-54px;top:-54px;width:160px;height:160px;border:1px solid rgba(245,197,24,0.35);transform:rotate(22deg);}
-.banner-preview.small{min-height:110px;}
-.banner-brand{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);position:relative;z-index:1;}
-.banner-line{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:2px;line-height:0.95;position:relative;z-index:1;}
-.banner-line em{color:var(--yellow);font-style:normal;}
-.banner-cta{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.3px;text-transform:uppercase;color:var(--black);background:var(--yellow);padding:6px 9px;width:fit-content;position:relative;z-index:1;}
-.link-builder{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:14px;}
-.link-builder input{background:var(--black);border:1px solid var(--border);color:var(--white);padding:12px 14px;font-family:'DM Mono',monospace;font-size:11px;min-width:0;}
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:36px;}
-.step-card{background:var(--dark);border:1px solid var(--border);padding:22px;}
-.step-num{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--yellow);line-height:1;margin-bottom:12px;}
-.step-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;margin-bottom:8px;}
-.step-card p{color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;}
-.partner-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
-.partner-form .form-group.full{grid-column:1/-1;}
-.partner-fineprint{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:1px;color:var(--gray);text-transform:uppercase;line-height:1.6;margin-top:12px;}
-.rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:34px;}
-.rule-card{background:var(--dark2);border:1px solid var(--border);padding:20px;}
-.rule-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;margin-bottom:8px;}
-.rule-card p{color:var(--mid);font-size:12.5px;line-height:1.65;font-weight:300;}
-
-/* ADMIN */
-.admin-page{background:var(--black);min-height:100vh;padding:118px 60px 80px;}
-.admin-shell{max-width:1280px;margin:0 auto;}
-.admin-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px;border-bottom:1px solid var(--border);padding-bottom:18px;}
-.admin-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,72px);letter-spacing:2px;line-height:0.95;}
-.admin-title em{color:var(--yellow);font-style:normal;}
-.admin-sub{color:var(--mid);font-size:13px;line-height:1.7;max-width:560px;margin-top:10px;}
-.admin-status{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);border:1px solid var(--yborder);background:var(--ydim);padding:8px 12px;}
-.admin-login{background:var(--dark);border:1px solid var(--yborder);padding:24px;max-width:520px;}
-.admin-login h2,.admin-panel h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:8px;}
-.admin-login p,.admin-note{color:var(--mid);font-size:13px;line-height:1.65;font-weight:300;margin-bottom:16px;}
-.admin-tabs{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:18px;}
-.admin-tab{background:var(--dark);border:1px solid var(--border);color:var(--mid);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.3px;text-transform:uppercase;padding:10px 12px;cursor:pointer;}
-.admin-tab.active,.admin-tab:hover{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
-.admin-panel{display:none;background:var(--dark);border:1px solid var(--border);padding:22px;}
-.admin-panel.active{display:block;}
-.admin-grid{display:grid;grid-template-columns:360px 1fr;gap:18px;}
-.admin-form{display:flex;flex-direction:column;gap:10px;background:var(--black);border:1px solid var(--border);padding:16px;}
-.admin-form label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);}
-.admin-form input,.admin-form textarea,.admin-form select{background:var(--dark);border:1px solid var(--border);color:var(--white);padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;}
-.admin-form textarea{min-height:86px;resize:vertical;}
-.admin-table-wrap{overflow:auto;border:1px solid var(--border);}
-.admin-table{width:100%;border-collapse:collapse;min-width:720px;}
-.admin-table th{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);background:var(--black);padding:10px;text-align:left;border-bottom:1px solid var(--border);}
-.admin-table td{font-size:12px;color:var(--mid);padding:10px;border-bottom:1px solid var(--border);vertical-align:top;}
-.admin-table tr:hover td{background:rgba(255,255,255,0.015);}
-.admin-table strong{color:var(--white);}
-.admin-actions{display:flex;gap:6px;flex-wrap:wrap;}
-.admin-mini-btn{background:transparent;border:1px solid var(--border);color:var(--white);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:6px 8px;cursor:pointer;}
-.admin-mini-btn:hover{border-color:var(--yellow);color:var(--yellow);}
-.admin-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:18px;}
-.admin-kpi{background:var(--dark);border:1px solid var(--border);padding:16px;}
-.admin-kpi strong{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--yellow);display:block;line-height:1;}
-.admin-kpi span{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray);}
-.admin-empty{color:var(--gray);font-size:13px;padding:18px;border:1px dashed var(--border);background:var(--black);}
-.admin-config{background:rgba(245,197,24,0.08);border:1px solid var(--yborder);padding:14px;color:var(--mid);font-size:12px;line-height:1.7;margin-bottom:16px;}
-.admin-config code{color:var(--yellow);}
-
-@media(max-width:900px){
-  .partner-hero{padding:112px 18px 48px;}
-  .partner-hero-inner{grid-template-columns:1fr;gap:28px;}
-  .partner-proof-grid,.tier-grid,.steps-grid,.rules-grid{grid-template-columns:1fr;}
-  .partner-proof{border-right:none;border-bottom:1px solid var(--border);}
-  .partner-section{padding:56px 18px;}
-  .kit-grid,.banner-grid,.partner-form{grid-template-columns:1fr;}
-  .link-builder{grid-template-columns:1fr;}
-  .admin-page{padding:108px 18px 56px;}
-  .admin-top{align-items:flex-start;flex-direction:column;}
-  .admin-grid,.admin-kpis{grid-template-columns:1fr;}
-}
-
 /* CTA */
 .cta-section{background:var(--dark);border-top:1px solid var(--border);text-align:center;overflow:hidden;position:relative;padding:72px 60px;}
 .cta-section::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(245,197,24,0.06),transparent 70%);pointer-events:none;}
@@ -336,8 +222,8 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 .footer-bottom{border-top:1px solid var(--border);padding:14px 60px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
 .footer-copy{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--gray);text-transform:uppercase;}
 .footer-legal{display:flex;gap:14px;}
-.footer-legal a{background:none;border:none;color:var(--gray);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;text-decoration:none;}
-.footer-legal a:hover{color:var(--yellow);}
+.footer-legal button{background:none;border:none;color:var(--gray);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;}
+.footer-legal button:hover{color:var(--yellow);}
 
 /* INNER PAGES */
 .inner-page{padding:120px 60px 100px;max-width:800px;margin:0 auto;}
@@ -418,6 +304,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
   .tool-reviews-grid{grid-template-columns:1fr;}
   .reviews-section{padding:56px 18px;}
   .tool-reviews{padding:36px 18px;}
+  .review-card{background:#161616;border:1px solid rgba(255,255,255,0.10);}
 }
 
 
@@ -512,6 +399,8 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
   .niche-picks-section{padding:32px 12px 48px!important;}
   /* Override ALL inline padded sections */
   section[style*="padding"]{padding-left:12px!important;padding-right:12px!important;}
+  .tool-card{background:#161616;border:1px solid rgba(255,255,255,0.10);}
+  .tools-grid{gap:3px;}
 }
 @media(max-width:480px){
   .picks-section{padding:32px 10px!important;}
@@ -581,7 +470,10 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     grid-template-columns:34px 1fr!important;
     gap:10px!important;
     padding:14px 13px!important;
+    background:#1a1a1a!important;
+    border:1px solid rgba(255,255,255,0.14)!important;
   }
+  .tool-card:hover{transform:none!important;}
   .tool-num{font-size:18px;}
   .tool-name{font-size:15px;}
   .tool-desc{font-size:11.5px;}
@@ -695,6 +587,11 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 .ai-result-retry{background:none;border:none;color:var(--gray);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;padding:4px;}
 .ai-result-retry:hover{color:var(--yellow);}
 @media(max-width:960px){.ai-suggester{max-width:100%;}.ai-input{font-size:12px;padding:13px 12px 13px 32px;}.ai-submit-btn{padding:13px 14px;font-size:9px;}}
+
+footer a{color:var(--mid);text-decoration:none;}
+footer a:hover{color:var(--white);}
+footer button{background:none;border:none;color:var(--mid);font-size:13px;font-weight:300;cursor:pointer;text-align:left;transition:color 0.2s;padding:0;font-family:inherit;}
+footer button:hover{color:var(--white);}
 </style>
 </head>
 <body>
@@ -723,36 +620,34 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="./"><span class="logo-dot"></span>THE PICK LIST</a>
+  <a class="logo" onclick="showPage('home')"><span class="logo-dot"></span>THE PICK LIST</a>
   <ul class="nav-links">
-    <li><a href="./" class="active" id="nav-home">Home</a></li>
-    <li><a href="./ai-tools.html" id="nav-ai">AI Tools</a></li>
-    <li><a href="./marketing.html" id="nav-marketing">Marketing</a></li>
-    <li><a href="./wellness.html" id="nav-wellness">Wellness</a></li>
-    <li><a href="./content.html" id="nav-content">Content</a></li>
-    <li><a href="./saas.html" id="nav-saas">SaaS</a></li>
-    <li><a href="./make-money.html" id="nav-money">Make Money</a></li>
-    <li><a href="./about.html" id="nav-about">About</a></li>
-    <li><a href="./partners.html" id="nav-partners">Partners</a></li>
-    <li><a href="./contact.html" id="nav-contact">Contact</a></li>
-    <li><a href="./#picks" class="nav-cta">Top Picks</a></li>
+    <li><button onclick="showPage('home')" class="active" id="nav-home">Home</button></li>
+    <li><button onclick="showPage('ai')" id="nav-ai">AI Tools</button></li>
+    <li><button onclick="showPage('marketing')" id="nav-marketing">Marketing</button></li>
+    <li><button onclick="showPage('wellness')" id="nav-wellness">Wellness</button></li>
+    <li><button onclick="showPage('content')" id="nav-content">Content</button></li>
+    <li><button onclick="showPage('saas')" id="nav-saas">SaaS</button></li>
+    <li><button onclick="showPage('money')" id="nav-money">Make Money</button></li>
+    <li><button onclick="showPage('about')" id="nav-about">About</button></li>
+    <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
+    <li><button onclick="showPage('home');setTimeout(()=>document.getElementById('picks').scrollIntoView({behavior:'smooth'}),80)" class="nav-cta">Top Picks</button></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="./">Home</a>
-  <a href="./ai-tools.html">AI Tools</a>
-  <a href="./marketing.html">Marketing and Funnels</a>
-  <a href="./wellness.html">Wellness and Health</a>
-  <a href="./content.html">Content Creation</a>
-  <a href="./saas.html">SaaS and Business</a>
-  <a href="./make-money.html">Make Money Online</a>
-  <a href="./about.html">About</a>
-  <a href="./partners.html">Partner Program</a>
-  <a href="./contact.html">Contact</a>
-  <a href="./legal.html">Legal</a>
+  <button onclick="showPage('home');toggleMenu()">Home</button>
+  <button onclick="showPage('ai');toggleMenu()">AI Tools</button>
+  <button onclick="showPage('marketing');toggleMenu()">Marketing and Funnels</button>
+  <button onclick="showPage('wellness');toggleMenu()">Wellness and Health</button>
+  <button onclick="showPage('content');toggleMenu()">Content Creation</button>
+  <button onclick="showPage('saas');toggleMenu()">SaaS and Business</button>
+  <button onclick="showPage('money');toggleMenu()">Make Money Online</button>
+  <button onclick="showPage('about');toggleMenu()">About</button>
+  <button onclick="showPage('contact');toggleMenu()">Contact</button>
+  <button onclick="showPage('privacy');toggleMenu()">Legal</button>
 </div>
 
 <!-- EXIT POPUP -->
@@ -762,7 +657,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="popup-tag">Before You Go · Free</div>
     <div class="popup-title">GET THE <em>FULL</em> PICKS LIST</div>
     <p class="popup-sub">Our weekly digest of the best tools and products actually delivering results in 2026. No fluff, no spam. Just what works.</p>
-<form class="kit-custom-form" data-source="exit_popup" onsubmit="handleEmailSignup(event,this)">
+<form class="kit-custom-form" onsubmit="kitSubmit(event,this)">
   <div class="kit-fields">
     <input class="kit-email-input" name="email_address" aria-label="Email Address" placeholder="Your email address..." required type="email">
     <button type="submit" class="kit-submit-btn"><span>Get It Free</span></button>
@@ -779,7 +674,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <span class="sticky-text">Get our <span>free weekly picks</span> · tools that actually work</span>
   </div>
   <div class="sticky-form" style="flex:1;max-width:380px;">
-<form class="kit-custom-form" data-source="sticky_bar" onsubmit="handleEmailSignup(event,this)">
+<form class="kit-custom-form" onsubmit="kitSubmit(event,this)">
   <div class="kit-fields">
     <input class="kit-email-input" name="email_address" aria-label="Email Address" placeholder="Your email..." required type="email">
     <button type="submit" class="kit-submit-btn"><span>Subscribe</span></button>
@@ -1023,7 +918,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
     <div class="tool-card reveal" onclick="showPage('prod-clickfunnels')" style="cursor:pointer;">
       <span class="badge b-yellow">Editor's Pick</span>
-      <div class="tool-num">01</div>
+      <div class="tool-num">0<span class="tn-digit">1</span></div>
       <div><div class="tool-name">ClickFunnels <span class="tool-tag">Marketing</span></div>
       <p class="tool-desc">The reason 100,000 plus online businesses actually make sales. A website looks good · a funnel makes money. Zero design or coding skills needed. The gap between businesses making money online and those who are not is usually just the funnel.</p></div>
       <div class="tool-action">
@@ -1036,7 +931,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
     <div class="tool-card reveal" onclick="showPage('prod-medbed')" style="cursor:pointer;">
       <span class="badge b-purple">Wellness Pick</span>
-      <div class="tool-num">02</div>
+      <div class="tool-num">0<span class="tn-digit">2</span></div>
       <div><div class="tool-name">Tesla MedBed X <span class="tool-tag">Wellness</span></div>
       <p class="tool-desc">An advanced full-body wellness system combining PEMF therapy, red light therapy, far infrared heat and negative ion infusion. Designed for deep relaxation, faster recovery, improved sleep and whole-body rejuvenation. Used by thousands across the USA. 60-day money-back guarantee · no questions asked.</p></div>
       <div class="tool-action">
@@ -1049,7 +944,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
     <div class="tool-card reveal" onclick="showPage('prod-tpp')" style="cursor:pointer;">
       <span class="badge b-green">Top Rated</span>
-      <div class="tool-num">03</div>
+      <div class="tool-num">0<span class="tn-digit">3</span></div>
       <div><div class="tool-name">TPP System <span class="tool-tag">Make Money</span></div>
       <p class="tool-desc">The True Prosperity Path System is a comprehensive wealth transformation program combining mindset training with practical investment strategies used by successful entrepreneurs across America. Video lessons, training modules, exclusive ebook and lifetime access to a private mastermind community. Thousands report breakthrough financial transformations. 60-day guarantee.</p></div>
       <div class="tool-action">
@@ -1061,7 +956,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
     <div class="tool-card reveal" onclick="showPage('prod-customgpt')" style="cursor:pointer;">
       <span class="badge b-blue">AI Pick</span>
-      <div class="tool-num">04</div>
+      <div class="tool-num">0<span class="tn-digit">4</span></div>
       <div><div class="tool-name">CustomGPT <span class="tool-tag">AI Tools</span></div>
       <p class="tool-desc">Build your own AI assistant trained on your business data. Customer support, sales FAQs, knowledge bases · all automated 24/7. Businesses using it report cutting support workload by over 60 percent. Not a chatbot. Your business running around the clock without you.</p></div>
       <div class="tool-action">
@@ -1074,7 +969,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
     <div class="tool-card reveal" onclick="showPage('prod-frase')" style="cursor:pointer;">
       <span class="badge b-red">Trending</span>
-      <div class="tool-num">05</div>
+      <div class="tool-num">0<span class="tn-digit">5</span></div>
       <div><div class="tool-name">Frase.io <span class="tool-tag">Content SEO</span></div>
       <p class="tool-desc">Researches, outlines and writes content that actually ranks on Google. Analyzes the top results for your keyword and builds articles around what is already working. Bloggers and SEO agencies use it to cut production time in half while doubling their traffic. The results are not subtle.</p></div>
       <div class="tool-action">
@@ -1086,7 +981,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-qc')" style="cursor:pointer;">
-      <div class="tool-num">06</div>
+      <div class="tool-num">0<span class="tn-digit">6</span></div>
       <div><div class="tool-name">QC System <span class="tool-tag">Education</span></div>
       <p class="tool-desc">An in-depth educational video series that uncovers how quantum computing is set to transform global finance. Clear explanations, expert-led lessons and practical frameworks on quantum technology, encryption and the future monetary system. For professionals and curious minds alike. 60-day money-back guarantee.</p></div>
       <div class="tool-action">
@@ -1097,7 +992,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-odr')" style="cursor:pointer;">
-      <div class="tool-num">07</div>
+      <div class="tool-num">0<span class="tn-digit">7</span></div>
       <div><div class="tool-name">Online Digital Redemption <span class="tool-tag">Make Money</span></div>
       <p class="tool-desc">A digital program designed to help people break free from financial limitations and build a sustainable online income. Practical strategies, step-by-step guidance and proven frameworks for creating real digital income streams from scratch. For anyone ready to stop trading time for money.</p></div>
       <div class="tool-action">
@@ -1107,7 +1002,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-livechat')" style="cursor:pointer;">
-      <div class="tool-num">08</div>
+      <div class="tool-num">0<span class="tn-digit">8</span></div>
       <div><div class="tool-name">LiveChat <span class="tool-tag">SaaS</span></div>
       <p class="tool-desc">Every visitor who leaves your site without buying is money left on the table. LiveChat connects your team to visitors in real time and captures leads automatically when offline. Companies report 20 to 30 percent revenue increases from traffic they were already getting.</p></div>
       <div class="tool-action">
@@ -1118,7 +1013,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-repurpose')" style="cursor:pointer;">
-      <div class="tool-num">09</div>
+      <div class="tool-num">0<span class="tn-digit">9</span></div>
       <div><div class="tool-name">Repurpose.io <span class="tool-tag">Content</span></div>
       <p class="tool-desc">Record once, post everywhere. Automatically distributes your content to YouTube, TikTok, Instagram, Facebook and more · formatted for each platform. Creators post 5x more content without spending 5x more time.</p></div>
       <div class="tool-action">
@@ -1129,7 +1024,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-chatbot')" style="cursor:pointer;">
-      <div class="tool-num">10</div>
+      <div class="tool-num">1<span class="tn-digit">0</span></div>
       <div><div class="tool-name">ChatBot <span class="tool-tag">SaaS</span></div>
       <p class="tool-desc">Handles customer questions, qualifies leads and books appointments without a single human involved. Works 24/7, never misses a message. For businesses drowning in repetitive support queries, this pays for itself in week one.</p></div>
       <div class="tool-action">
@@ -1140,7 +1035,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-helpdesk')" style="cursor:pointer;">
-      <div class="tool-num">11</div>
+      <div class="tool-num">1<span class="tn-digit">1</span></div>
       <div><div class="tool-name">HelpDesk <span class="tool-tag">SaaS</span></div>
       <p class="tool-desc">All customer messages · email, chat, social · in one clean inbox. Teams resolve issues 40 percent faster. The professional standard for customer support that actually scales with your business.</p></div>
       <div class="tool-action">
@@ -1152,7 +1047,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
 
     <div class="tool-card reveal" onclick="showPage('prod-ofa')" style="cursor:pointer;">
       <span class="badge b-green">Best for Beginners</span>
-      <div class="tool-num">12</div>
+      <div class="tool-num">1<span class="tn-digit">2</span></div>
       <div><div class="tool-name">One Funnel Away <span class="tool-tag">Make Money</span></div>
       <p class="tool-desc">The fastest path from zero to a working online business. 30 days of daily coaching to build your first profitable funnel. Over 100,000 completions. The one investment that pays back immediately for anyone starting from scratch.</p></div>
       <div class="tool-action">
@@ -1163,7 +1058,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-text')" style="cursor:pointer;">
-      <div class="tool-num">13</div>
+      <div class="tool-num">1<span class="tn-digit">3</span></div>
       <div><div class="tool-name">Text App <span class="tool-tag">SaaS</span></div>
       <p class="tool-desc">SMS and messaging campaigns for business. 98 percent open rates vs 20 percent for email. That is not a small difference · that is a completely different game. Reach customers where they actually look.</p></div>
       <div class="tool-action">
@@ -1174,7 +1069,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     </div>
 
     <div class="tool-card reveal" onclick="showPage('prod-matrix')" style="cursor:pointer;">
-      <div class="tool-num">14</div>
+      <div class="tool-num">1<span class="tn-digit">4</span></div>
       <div><div class="tool-name">Matrix Prinzip <span class="tool-tag">Education</span></div>
       <p class="tool-desc">A comprehensive program revealing the hidden systems and frameworks used by the most successful people to build wealth and freedom. Practical, actionable and designed for people who are serious about creating lasting change in their financial and personal lives.</p></div>
       <div class="tool-action">
@@ -1193,7 +1088,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <h2 class="section-title">STAY AHEAD OF THE <em>CURVE</em></h2>
     <p style="color:var(--mid);font-size:14px;line-height:1.7;font-weight:300;margin:0 auto 4px;">New products. Real reviews. Exclusive deals. Delivered free every week.</p>
     <div class="email-section-form" style="max-width:440px;margin:16px auto 0;">
-<form class="kit-custom-form" data-source="email_section" onsubmit="handleEmailSignup(event,this)">
+<form class="kit-custom-form" onsubmit="kitSubmit(event,this)">
   <div class="kit-fields">
     <input class="kit-email-input" name="email_address" aria-label="Email Address" placeholder="Your email address..." required type="email">
     <button type="submit" class="kit-submit-btn"><span>Get Free Picks</span></button>
@@ -1402,7 +1297,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="tools-wrap"><div class="tools-grid">
       <div onclick="showPage('prod-customgpt')" class="tool-card featured reveal" style="cursor:pointer;">
         <span class="badge b-yellow">Top AI Pick</span>
-        <div class="tool-num">01</div>
+        <div class="tool-num">0<span class="tn-digit">1</span></div>
         <div><div class="tool-name">CustomGPT <span class="tool-tag">AI Assistant</span></div>
         <p class="tool-desc">Build your own AI trained on your business data. Automate customer support, sales FAQs and knowledge bases 24/7. Cuts support workload by over 60 percent. Your business brain running while you sleep.</p></div>
         <div class="tool-action">
@@ -1415,7 +1310,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
       </div>
       <div onclick="showPage('prod-frase')" class="tool-card reveal" style="cursor:pointer;">
         <span class="badge b-red">Trending</span>
-        <div class="tool-num">02</div>
+        <div class="tool-num">0<span class="tn-digit">2</span></div>
         <div><div class="tool-name">Frase.io <span class="tool-tag">AI plus SEO</span></div>
         <p class="tool-desc">Researches, outlines and writes content that ranks on Google. Analyzes what is already working and builds your content around it. Agencies cut content time in half while doubling traffic. Try the free tools first · you will see immediately why it is different.</p></div>
         <div class="tool-action">
@@ -1471,7 +1366,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="tools-wrap"><div class="tools-grid">
       <div onclick="showPage('prod-clickfunnels')" class="tool-card featured reveal" style="cursor:pointer;">
         <span class="badge b-yellow">Editor's Pick</span>
-        <div class="tool-num">01</div>
+        <div class="tool-num">0<span class="tn-digit">1</span></div>
         <div><div class="tool-name">ClickFunnels <span class="tool-tag">Funnel Builder</span></div>
         <p class="tool-desc">Converts visitors into paying customers with proven templates. 100,000 plus active businesses. Zero technical skills needed. The gap between businesses making money online and those who are not is usually just having the right funnel.</p></div>
         <div class="tool-action">
@@ -1482,7 +1377,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-livechat')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">02</div>
+        <div class="tool-num">0<span class="tn-digit">2</span></div>
         <div><div class="tool-name">LiveChat <span class="tool-tag">Conversion</span></div>
         <p class="tool-desc">Every visitor who leaves without buying is money lost. Real-time chat that captures leads automatically when offline. Companies report 20 to 30 percent revenue increases from traffic they already had.</p></div>
         <div class="tool-action">
@@ -1491,7 +1386,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-ofa')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">03</div>
+        <div class="tool-num">0<span class="tn-digit">3</span></div>
         <div><div class="tool-name">One Funnel Away <span class="tool-tag">Challenge</span></div>
         <p class="tool-desc">30 days of coaching to build your first profitable funnel. Over 100,000 completions. The fastest way from zero to your first online sale with a proven step-by-step roadmap.</p></div>
         <div class="tool-action">
@@ -1543,7 +1438,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="tools-wrap"><div class="tools-grid">
       <div onclick="showPage('prod-medbed')" class="tool-card featured reveal" style="cursor:pointer;">
         <span class="badge b-purple">Wellness Pick</span>
-        <div class="tool-num">01</div>
+        <div class="tool-num">0<span class="tn-digit">1</span></div>
         <div><div class="tool-name">Tesla MedBed X <span class="tool-tag">Wellness Device</span></div>
         <p class="tool-desc">An advanced full-body wellness system combining PEMF therapy, red and near-infrared light therapy, far infrared heat, negative ion infusion and energy-emitting gemstone technology. Designed for deep relaxation, faster muscle recovery, improved sleep quality and whole-body cellular rejuvenation. Used by thousands of Americans. Models available: Lite at $1,399, Pro at $1,999 and Ultra at $2,499. Every purchase comes with a 100 percent unconditional 60-day money-back guarantee · no questions, no hassle, no stress.</p></div>
         <div class="tool-action">
@@ -1599,7 +1494,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="tools-wrap"><div class="tools-grid">
       <div onclick="showPage('prod-frase')" class="tool-card featured reveal" style="cursor:pointer;">
         <span class="badge b-red">Hot Pick</span>
-        <div class="tool-num">01</div>
+        <div class="tool-num">0<span class="tn-digit">1</span></div>
         <div><div class="tool-name">Frase.io <span class="tool-tag">SEO Content</span></div>
         <p class="tool-desc">Researches, outlines and writes content that ranks on Google. Try the free tools first and you will immediately see why it is different from every other AI writer. Bloggers and agencies cut production time in half while doubling traffic.</p></div>
         <div class="tool-action">
@@ -1610,7 +1505,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-repurpose')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">02</div>
+        <div class="tool-num">0<span class="tn-digit">2</span></div>
         <div><div class="tool-name">Repurpose.io <span class="tool-tag">Distribution</span></div>
         <p class="tool-desc">Record once, post everywhere. Automatically distributes to YouTube, TikTok, Instagram, Facebook and more · formatted for each platform. Creators post 5x more content without spending 5x more time.</p></div>
         <div class="tool-action">
@@ -1634,7 +1529,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="tools-wrap"><div class="tools-grid">
       <div onclick="showPage('prod-livechat')" class="tool-card featured reveal" style="cursor:pointer;">
         <span class="badge b-yellow">Top SaaS Pick</span>
-        <div class="tool-num">01</div>
+        <div class="tool-num">0<span class="tn-digit">1</span></div>
         <div><div class="tool-name">LiveChat <span class="tool-tag">Live Support</span></div>
         <p class="tool-desc">Real-time chat that turns visitors into customers. Proven 20 to 30 percent revenue increase from existing traffic. Captures leads automatically when offline. The simplest way to stop losing sales you almost had.</p></div>
         <div class="tool-action">
@@ -1643,7 +1538,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-chatbot')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">02</div>
+        <div class="tool-num">0<span class="tn-digit">2</span></div>
         <div><div class="tool-name">ChatBot <span class="tool-tag">Automation</span></div>
         <p class="tool-desc">Automates customer questions, lead qualification and appointment booking 24/7. Set it up once and let it run. Pays for itself in week one for businesses drowning in repetitive support.</p></div>
         <div class="tool-action">
@@ -1652,7 +1547,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-helpdesk')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">03</div>
+        <div class="tool-num">0<span class="tn-digit">3</span></div>
         <div><div class="tool-name">HelpDesk <span class="tool-tag">Support</span></div>
         <p class="tool-desc">All customer messages in one inbox. Teams resolve issues 40 percent faster. The professional standard for customer support that actually scales.</p></div>
         <div class="tool-action">
@@ -1676,7 +1571,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
     <div class="tools-wrap"><div class="tools-grid">
       <div onclick="showPage('prod-clickfunnels')" class="tool-card featured reveal" style="cursor:pointer;">
         <span class="badge b-yellow">Best for Sellers</span>
-        <div class="tool-num">01</div>
+        <div class="tool-num">0<span class="tn-digit">1</span></div>
         <div><div class="tool-name">ClickFunnels <span class="tool-tag">Funnel Builder</span></div>
         <p class="tool-desc">The most proven way to sell anything online. 100,000 plus active users. Build funnels that convert without technical skills. If you sell anything online this is the tool that closes.</p></div>
         <div class="tool-action">
@@ -1687,7 +1582,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
       </div>
       <div onclick="showPage('prod-tpp')" class="tool-card reveal" style="cursor:pointer;">
         <span class="badge b-green">Top Rated</span>
-        <div class="tool-num">02</div>
+        <div class="tool-num">0<span class="tn-digit">2</span></div>
         <div><div class="tool-name">TPP System <span class="tool-tag">Wealth Program</span></div>
         <p class="tool-desc">The True Prosperity Path combines mindset transformation with real investment strategies used by successful entrepreneurs. Video lessons, training modules, private mastermind community and lifetime access. Thousands report breakthrough financial shifts. 60-day full refund guarantee.</p></div>
         <div class="tool-action">
@@ -1696,7 +1591,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-odr')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">03</div>
+        <div class="tool-num">0<span class="tn-digit">3</span></div>
         <div><div class="tool-name">Online Digital Redemption <span class="tool-tag">Digital Income</span></div>
         <p class="tool-desc">A program for building sustainable online income streams from scratch. Practical step-by-step frameworks for anyone ready to stop trading time for money and build real digital income.</p></div>
         <div class="tool-action">
@@ -1704,7 +1599,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
         </div>
       </div>
       <div onclick="showPage('prod-qc')" class="tool-card reveal" style="cursor:pointer;">
-        <div class="tool-num">04</div>
+        <div class="tool-num">0<span class="tn-digit">4</span></div>
         <div><div class="tool-name">QC System <span class="tool-tag">Future Finance</span></div>
         <p class="tool-desc">Understand the financial systems that will dominate the next decade. Quantum computing is transforming global finance · this educational series breaks down exactly how and what it means for your money. 60-day money-back guarantee.</p></div>
         <div class="tool-action">
@@ -1714,7 +1609,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
       </div>
       <div onclick="showPage('prod-ofa')" class="tool-card reveal" style="cursor:pointer;">
         <span class="badge b-blue">Best for Beginners</span>
-        <div class="tool-num">05</div>
+        <div class="tool-num">0<span class="tn-digit">5</span></div>
         <div><div class="tool-name">One Funnel Away <span class="tool-tag">30-Day Challenge</span></div>
         <p class="tool-desc">30 days of coaching to build your first profitable funnel. 100,000 plus completions. The fastest roadmap from zero to first online sale that exists anywhere online.</p></div>
         <div class="tool-action">
@@ -1723,7 +1618,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
       </div>
       <div onclick="showPage('prod-livechat')" class="tool-card reveal" style="cursor:pointer;">
         <span class="badge b-purple">Passive Income</span>
-        <div class="tool-num">06</div>
+        <div class="tool-num">0<span class="tn-digit">6</span></div>
         <div><div class="tool-name">LiveChat Partner Program <span class="tool-tag">Referral Income</span></div>
         <p class="tool-desc">Refer other affiliates and earn 5 percent of everything they make · forever. Passive income on top of passive income. One solid referral who builds their own affiliate business could pay you for years with zero additional effort.</p></div>
         <div class="tool-action">
@@ -1759,240 +1654,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);}
   </div>
 </div>
 
-<!-- =================== PARTNER PROGRAM PAGE =================== -->
-<div id="page-partners" class="page">
-  <section class="partner-hero">
-    <div class="partner-hero-inner">
-      <div>
-        <div class="partner-kicker"><span></span>The Pick List Partner Program</div>
-        <h1>POST. SHARE.<br>EARN FROM <em>THE PICKS</em></h1>
-        <p class="partner-lede">A smooth affiliate program for creators, newsletter writers, niche site owners and operators who already talk about useful tools. We give you the links, angles, banners, posts and email copy. You share them with your audience.</p>
-        <div class="partner-actions">
-          <button class="btn btn-yellow" onclick="document.getElementById('partner-apply').scrollIntoView({behavior:'smooth'})">Apply To Partner</button>
-          <button class="btn btn-outline" onclick="document.getElementById('promo-kit').scrollIntoView({behavior:'smooth'})">Open Promo Kit</button>
-        </div>
-        <div class="partner-proof-grid">
-          <div class="partner-proof"><strong>20-40%</strong><span>Of our commission</span></div>
-          <div class="partner-proof"><strong>Free</strong><span>Promo kit included</span></div>
-          <div class="partner-proof"><strong>Fast</strong><span>Copy, post, share</span></div>
-        </div>
-      </div>
-      <div class="partner-card">
-        <div class="partner-card-title">What Partners Get</div>
-        <p class="partner-card-text">Everything is designed so a partner can start promoting in minutes without writing from scratch.</p>
-        <ul class="partner-card-list">
-          <li>Unique tracking link format with UTM-ready share links.</li>
-          <li>Ready-made social posts for X, LinkedIn, Instagram and communities.</li>
-          <li>Banner creatives in square and wide formats.</li>
-          <li>Email templates for launch, follow-up and newsletter mentions.</li>
-          <li>Tier bumps as referral volume grows.</li>
-        </ul>
-        <button class="btn btn-yellow" onclick="document.getElementById('partner-link-builder').scrollIntoView({behavior:'smooth'})">Build My Link</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="partner-section">
-    <div class="partner-wrap">
-      <div class="sec-head reveal">
-        <div class="section-label">Partner Tiers</div>
-        <h2 class="section-title">THE MORE YOU SEND, <em>THE MORE YOU KEEP</em></h2>
-        <p class="section-sub">Simple, transparent tiers based on confirmed referrals. Your cut is paid from The Pick List commission, so the buyer never pays extra.</p>
-      </div>
-      <div class="tier-grid">
-        <div class="tier-card reveal">
-          <div class="tier-label">0 to 10 referrals</div>
-          <div class="tier-name">Starter</div>
-          <div class="tier-cut">20% <span>of our commission</span></div>
-          <div class="tier-req">Requirement: 0-10 confirmed referrals.</div>
-          <p>Perfect for new partners testing which products match their audience.</p>
-        </div>
-        <div class="tier-card featured reveal">
-          <div class="tier-label">11 to 50 referrals</div>
-          <div class="tier-name">Pro</div>
-          <div class="tier-cut">30% <span>of our commission</span></div>
-          <div class="tier-req">Requirement: 11-50 confirmed referrals.</div>
-          <p>Built for consistent creators, publishers and community owners who promote weekly.</p>
-        </div>
-        <div class="tier-card reveal">
-          <div class="tier-label">50+ referrals</div>
-          <div class="tier-name">Elite</div>
-          <div class="tier-cut">40% <span>of our commission</span></div>
-          <div class="tier-req">Requirement: 50+ confirmed referrals.</div>
-          <p>For partners who make The Pick List a serious revenue channel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="partner-section alt">
-    <div class="partner-wrap">
-      <div class="sec-head reveal">
-        <div class="section-label">How It Works</div>
-        <h2 class="section-title">A CLEAN SYSTEM FROM <em>LINK TO PAYOUT</em></h2>
-        <p class="section-sub">No complicated setup. Apply once, get your partner code, use the promo kit and track every referral by code.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card reveal"><div class="step-num">01</div><h3>Apply</h3><p>Tell us where you share recommendations and what audience you serve.</p></div>
-        <div class="step-card reveal"><div class="step-num">02</div><h3>Get Code</h3><p>Receive your partner code and a tracking link format for your posts.</p></div>
-        <div class="step-card reveal"><div class="step-num">03</div><h3>Share Kit</h3><p>Copy a post, banner or email template and send people to The Pick List.</p></div>
-        <div class="step-card reveal"><div class="step-num">04</div><h3>Earn</h3><p>Qualified purchases through your referral unlock your tiered partner cut.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="partner-section" id="promo-kit">
-    <div class="partner-wrap">
-      <div class="sec-head reveal">
-        <div class="section-label">Partner Promo Kit</div>
-        <h2 class="section-title">COPY, POST, SHARE, <em>DONE</em></h2>
-        <p class="section-sub">Ready-made assets partners can use immediately. Swap in your referral link, choose a product angle and publish.</p>
-      </div>
-      <div class="kit-grid">
-        <div class="kit-panel reveal">
-          <div class="kit-head"><div class="kit-title">X / Threads Post</div><button class="copy-btn" onclick="copyKit('social-x',this)">Copy</button></div>
-          <div class="copy-box" id="social-x">I found a shortcut for choosing better tools without wasting weeks testing random apps.
-
-The Pick List ranks proven AI, marketing, SaaS, wellness and make-money tools in one clean place.
-
-Start here: https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
-        </div>
-        <div class="kit-panel reveal">
-          <div class="kit-head"><div class="kit-title">LinkedIn Post</div><button class="copy-btn" onclick="copyKit('social-linkedin',this)">Copy</button></div>
-          <div class="copy-box" id="social-linkedin">Most people lose time comparing tools instead of using them.
-
-The Pick List does the filtering first: AI tools, funnel builders, SEO platforms, customer support software and digital income systems that are actually worth a look.
-
-If you want a cleaner starting point, browse the current list here:
-https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
-        </div>
-        <div class="kit-panel reveal">
-          <div class="kit-head"><div class="kit-title">Instagram Caption</div><button class="copy-btn" onclick="copyKit('social-ig',this)">Copy</button></div>
-          <div class="copy-box" id="social-ig">Stop guessing which tools are worth your time.
-
-The Pick List is a curated list of top-rated tools for creators, founders, marketers and online business builders.
-
-AI, funnels, SEO, support, content, wellness and money tools in one place.
-
-Link: https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
-        </div>
-        <div class="kit-panel reveal">
-          <div class="kit-head"><div class="kit-title">Community Post</div><button class="copy-btn" onclick="copyKit('social-community',this)">Copy</button></div>
-          <div class="copy-box" id="social-community">Useful resource for anyone comparing business tools:
-
-The Pick List curates recommended tools by category, including AI, funnels, SEO, customer support, content repurposing and online income programs.
-
-Good starting point if you want options without opening 20 tabs:
-https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
-        </div>
-        <div class="kit-panel wide reveal">
-          <div class="kit-head"><div class="kit-title">Email Templates</div><button class="copy-btn" onclick="copyKit('email-templates',this)">Copy All</button></div>
-          <div class="copy-box" id="email-templates">SUBJECT: My shortcut for finding better tools
-
-Hey,
-
-If you are comparing tools for your business, I found a clean starting point: The Pick List.
-
-It curates top-rated products across AI, marketing, SEO, SaaS, content, wellness and make-money categories, with direct links and short explanations of who each tool is best for.
-
-Browse it here:
-https://whatuprehan.github.io/thepicklist/?ref=YOURCODE
-
---
-
-SUBJECT: Before you buy another tool
-
-Quick recommendation: check The Pick List before paying for your next app or program.
-
-It is built to save you from endless comparison tabs by showing strong picks by category and use case.
-
-Here is the list:
-https://whatuprehan.github.io/thepicklist/?ref=YOURCODE
-
---
-
-SUBJECT: A resource worth bookmarking
-
-I am bookmarking this one.
-
-The Pick List keeps a curated collection of useful tools for entrepreneurs, creators and online operators. AI tools, funnel software, SEO platforms, support tools and more.
-
-Take a look:
-https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
-        </div>
-        <div class="kit-panel wide reveal">
-          <div class="kit-head"><div class="kit-title">Banner Images</div><button class="copy-btn" onclick="downloadPartnerBanners(this)">Download SVGs</button></div>
-          <div class="banner-grid">
-            <div class="banner-preview">
-              <div class="banner-brand">The Pick List</div>
-              <div class="banner-line">FIND THE <em>RIGHT TOOL</em> FASTER</div>
-              <div class="banner-cta">Browse Top Picks</div>
-            </div>
-            <div class="banner-preview">
-              <div class="banner-brand">Partner Share Creative</div>
-              <div class="banner-line">AI, FUNNELS, SEO, SAAS <em>RANKED</em></div>
-              <div class="banner-cta">Start Here</div>
-            </div>
-            <div class="banner-preview small">
-              <div class="banner-brand">The Pick List</div>
-              <div class="banner-line">STOP GUESSING. <em>PICK BETTER.</em></div>
-            </div>
-            <div class="banner-preview small">
-              <div class="banner-brand">Affiliate Ready</div>
-              <div class="banner-line">COPY. POST. <em>EARN.</em></div>
-            </div>
-          </div>
-        </div>
-        <div class="kit-panel wide reveal" id="partner-link-builder">
-          <div class="kit-head"><div class="kit-title">Referral Link Builder</div><button class="copy-btn" onclick="copyPartnerLink(this)">Copy Link</button></div>
-          <p class="partner-card-text">Enter your partner code after approval. The link updates instantly so every post can use the same clean URL format.</p>
-          <div class="link-builder">
-            <input id="partner-code" type="text" placeholder="YOURCODE" oninput="buildPartnerLink()" maxlength="32">
-            <button class="btn btn-yellow" onclick="buildPartnerLink()">Build Link</button>
-          </div>
-          <div class="copy-box" id="partner-link-output" style="margin-top:10px;min-height:auto;">https://whatuprehan.github.io/thepicklist/?ref=YOURCODE&utm_source=partner&utm_medium=affiliate&utm_campaign=partner_program</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="partner-section alt">
-    <div class="partner-wrap">
-      <div class="sec-head reveal">
-        <div class="section-label">Quality Rules</div>
-        <h2 class="section-title">BUILT FOR REAL TRUST, <em>NOT SPAM</em></h2>
-        <p class="section-sub">The best partners win because their audience trusts them. These rules protect that trust and keep the program clean.</p>
-      </div>
-      <div class="rules-grid">
-        <div class="rule-card reveal"><h3>Disclose Clearly</h3><p>Use a simple affiliate disclosure anywhere you share a partner link.</p></div>
-        <div class="rule-card reveal"><h3>No Fake Claims</h3><p>Do not promise income, medical results or guaranteed outcomes from any product.</p></div>
-        <div class="rule-card reveal"><h3>Send Real Traffic</h3><p>No bots, coupon abuse, paid search on brand terms or misleading redirects.</p></div>
-        <div class="rule-card reveal"><h3>Use Approved Assets</h3><p>Start with the promo kit, then customize copy without changing product facts.</p></div>
-        <div class="rule-card reveal"><h3>Monthly Review</h3><p>Referral counts and tier status are reviewed monthly after validation.</p></div>
-        <div class="rule-card reveal"><h3>Simple Payouts</h3><p>Payouts are handled after vendor commissions clear and refunds are accounted for.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="partner-section" id="partner-apply">
-    <div class="partner-wrap">
-      <div class="sec-head reveal">
-        <div class="section-label">Apply</div>
-        <h2 class="section-title">BECOME A <em>PARTNER</em></h2>
-        <p class="section-sub">Tell us where you plan to promote The Pick List. This form confirms the flow on-site; connect it to your preferred form backend when you are ready to collect applications.</p>
-      </div>
-      <form class="contact-form partner-form reveal" onsubmit="handlePartnerApply(event)">
-        <div class="form-group"><label>Your Name</label><input name="name" type="text" placeholder="Your name" required></div>
-        <div class="form-group"><label>Email Address</label><input name="email" type="email" placeholder="you@example.com" required></div>
-        <div class="form-group"><label>Main Channel</label><input name="main_channel" type="text" placeholder="Newsletter, YouTube, X, blog, community" required></div>
-        <div class="form-group"><label>Audience Size</label><input name="audience_size" type="text" placeholder="Example: 5,000 newsletter readers"></div>
-        <div class="form-group full"><label>Why You Are A Fit</label><textarea name="fit_reason" placeholder="Tell us what you promote, who follows you and which categories match your audience." required></textarea></div>
-        <div class="form-group full"><button type="submit" class="btn btn-yellow" style="width:fit-content">Submit Partner Application</button><p class="partner-fineprint">Partner applications are reviewed for audience fit, disclosure quality and traffic source quality.</p></div>
-      </form>
-    </div>
-  </section>
-</div>
-
 <!-- =================== CONTACT PAGE =================== -->
 <div id="page-contact" class="page">
   <div class="inner-page">
@@ -2001,10 +1662,10 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
     <div class="inner-divider"></div>
     <p>Have a question, product suggestion or want to discuss a partnership? Fill out the form and we will get back to you within 24 to 48 hours.</p>
     <form class="contact-form" onsubmit="handleContact(event)">
-      <div class="form-group"><label>Your Name</label><input name="name" type="text" placeholder="John Smith" required></div>
-      <div class="form-group"><label>Email Address</label><input name="email" type="email" placeholder="you@example.com" required></div>
-      <div class="form-group"><label>Subject</label><input name="subject" type="text" placeholder="Product suggestion or Partnership or General"></div>
-      <div class="form-group"><label>Message</label><textarea name="message" placeholder="Your message..." required></textarea></div>
+      <div class="form-group"><label>Your Name</label><input type="text" placeholder="John Smith" required></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" required></div>
+      <div class="form-group"><label>Subject</label><input type="text" placeholder="Product suggestion or Partnership or General"></div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Your message..." required></textarea></div>
       <button type="submit" class="btn btn-yellow" style="width:fit-content">Send Message</button>
       <p style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gray);">We typically respond within 24 to 48 hours.</p>
     </form>
@@ -3162,146 +2823,6 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
   </div>
 </div>
 
-<!-- =================== ADMIN PAGE ===================
-<div id="page-admin" class="page admin-page" style="display:none !important;">
-  <div class="admin-shell">
-    <div class="admin-top">
-      <div>
-        <div class="section-label">Private Admin</div>
-        <h1 class="admin-title">THE PICK LIST <em>DATABASE</em></h1>
-        <p class="admin-sub">Manage products, partners, applications, clicks, manual commissions, promo kit assets and messages from one private dashboard.</p>
-      </div>
-      <div class="admin-status" id="admin-status">Checking database</div>
-    </div>
-
-    <div class="admin-config" id="admin-config-warning" style="display:none;">
-      Supabase is not connected yet. Run <code>supabase-schema.sql</code> in Supabase, then set <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> in <code>index.html</code>. Until then, public forms cannot write to the database.
-    </div>
-
-    <div class="admin-login" id="admin-login">
-      <h2>Admin Login</h2>
-      <p>Use the approved admin email. Supabase will send a magic login link.</p>
-      <form class="admin-form" onsubmit="adminSendMagicLink(event)">
-        <label>Email</label>
-        <input id="admin-email" type="email" value="mail2nswr@gmail.com" required>
-        <button class="btn btn-yellow" type="submit">Send Magic Link</button>
-      </form>
-    </div>
-
-    <div id="admin-dashboard" style="display:none;">
-      <div class="admin-kpis">
-        <div class="admin-kpi"><strong id="kpi-products">0</strong><span>Products</span></div>
-        <div class="admin-kpi"><strong id="kpi-apps">0</strong><span>Applications</span></div>
-        <div class="admin-kpi"><strong id="kpi-partners">0</strong><span>Partners</span></div>
-        <div class="admin-kpi"><strong id="kpi-clicks">0</strong><span>Clicks</span></div>
-        <div class="admin-kpi"><strong id="kpi-subscribers">0</strong><span>Subscribers</span></div>
-      </div>
-
-      <div class="admin-tabs">
-        <button class="admin-tab active" onclick="showAdminTab('products',this)">Products</button>
-        <button class="admin-tab" onclick="showAdminTab('applications',this)">Applications</button>
-        <button class="admin-tab" onclick="showAdminTab('partners-admin',this)">Partners</button>
-        <button class="admin-tab" onclick="showAdminTab('sales',this)">Sales</button>
-        <button class="admin-tab" onclick="showAdminTab('promo',this)">Promo Kit</button>
-        <button class="admin-tab" onclick="showAdminTab('messages',this)">Messages</button>
-        <button class="admin-tab" onclick="showAdminTab('subscribers',this)">Subscribers</button>
-        <button class="admin-tab" onclick="adminSignOut()">Sign Out</button>
-      </div>
-
-      <div class="admin-panel active" id="admin-products">
-        <div class="admin-grid">
-          <form class="admin-form" onsubmit="saveAdminProduct(event)">
-            <h2>Product</h2>
-            <input type="hidden" name="id">
-            <label>Slug</label><input name="slug" required placeholder="clickfunnels">
-            <label>Name</label><input name="name" required placeholder="ClickFunnels">
-            <label>Category Slug</label><input name="category_slug" required placeholder="marketing">
-            <label>Product Page ID</label><input name="page_id" placeholder="prod-clickfunnels">
-            <label>Rank</label><input name="rank" type="number" min="1" value="1">
-            <label>Badge</label><input name="badge" placeholder="Editor's Pick">
-            <label>Description</label><textarea name="description" required></textarea>
-            <label>Rating</label><input name="rating" type="number" step="0.1" min="0" max="5">
-            <label>Guarantee</label><input name="guarantee" placeholder="Free Trial">
-            <label>Best For</label><input name="best_for" placeholder="Selling anything online">
-            <label>Primary CTA</label><input name="primary_cta" required placeholder="Start Free Trial">
-            <label>Primary URL</label><input name="primary_url" required>
-            <button class="btn btn-yellow" type="submit">Save Product</button>
-            <button class="btn btn-outline" type="button" onclick="clearAdminForm('admin-products')">Clear</button>
-          </form>
-          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Product</th><th>Category</th><th>Rank</th><th>Rating</th><th>Actions</th></tr></thead><tbody id="admin-products-body"></tbody></table></div>
-        </div>
-      </div>
-
-      <div class="admin-panel" id="admin-applications">
-        <h2>Partner Applications</h2>
-        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Channel</th><th>Audience</th><th>Status</th><th>Actions</th></tr></thead><tbody id="admin-applications-body"></tbody></table></div>
-      </div>
-
-      <div class="admin-panel" id="admin-partners-admin">
-        <div class="admin-grid">
-          <form class="admin-form" onsubmit="saveAdminPartner(event)">
-            <h2>Partner</h2>
-            <input type="hidden" name="id">
-            <label>Name</label><input name="name" required>
-            <label>Email</label><input name="email" type="email" required>
-            <label>Code</label><input name="code" required placeholder="rehanpro">
-            <label>Status</label><select name="status"><option>active</option><option>paused</option></select>
-            <label>Referral Count</label><input name="referral_count" type="number" min="0" value="0">
-            <button class="btn btn-yellow" type="submit">Save Partner</button>
-            <button class="btn btn-outline" type="button" onclick="clearAdminForm('admin-partners-admin')">Clear</button>
-          </form>
-          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Partner</th><th>Code</th><th>Tier</th><th>Referrals</th><th>Actions</th></tr></thead><tbody id="admin-partners-body"></tbody></table></div>
-        </div>
-      </div>
-
-      <div class="admin-panel" id="admin-sales">
-        <div class="admin-grid">
-          <form class="admin-form" onsubmit="saveAdminSale(event)">
-            <h2>Manual Sale</h2>
-            <label>Partner Code</label><input name="partner_code" required>
-            <label>Product Slug</label><input name="product_slug">
-            <label>Buyer Email</label><input name="buyer_email" type="email">
-            <label>Our Commission</label><input name="our_commission" type="number" step="0.01" min="0" required>
-            <label>Partner Cut Percent</label><input name="partner_cut_percent" type="number" step="0.01" min="0" max="100" value="20">
-            <label>Status</label><select name="status"><option>pending</option><option>approved</option><option>paid</option><option>refunded</option></select>
-            <label>Notes</label><textarea name="notes"></textarea>
-            <button class="btn btn-yellow" type="submit">Add Sale</button>
-          </form>
-          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Partner</th><th>Product</th><th>Our Commission</th><th>Partner Amount</th><th>Status</th></tr></thead><tbody id="admin-sales-body"></tbody></table></div>
-        </div>
-      </div>
-
-      <div class="admin-panel" id="admin-promo">
-        <div class="admin-grid">
-          <form class="admin-form" onsubmit="saveAdminPromo(event)">
-            <h2>Promo Asset</h2>
-            <input type="hidden" name="id">
-            <label>Type</label><select name="asset_type"><option>social</option><option>email</option><option>banner</option></select>
-            <label>Title</label><input name="title" required>
-            <label>Body</label><textarea name="body" required></textarea>
-            <label>Sort Order</label><input name="sort_order" type="number" value="0">
-            <button class="btn btn-yellow" type="submit">Save Asset</button>
-            <button class="btn btn-outline" type="button" onclick="clearAdminForm('admin-promo')">Clear</button>
-          </form>
-          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Type</th><th>Title</th><th>Body</th><th>Actions</th></tr></thead><tbody id="admin-promo-body"></tbody></table></div>
-        </div>
-      </div>
-
-      <div class="admin-panel" id="admin-messages">
-        <h2>Contact Messages</h2>
-        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Status</th></tr></thead><tbody id="admin-messages-body"></tbody></table></div>
-      </div>
-
-      <div class="admin-panel" id="admin-subscribers">
-        <h2>Newsletter Subscribers</h2>
-        <div class="admin-note">All email captures from popup, sticky bar and weekly picks form are saved here.</div>
-        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Email</th><th>Source</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead><tbody id="admin-subscribers-body"></tbody></table></div>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -3312,22 +2833,21 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
     <div class="footer-col">
       <div class="footer-col-title">Navigate</div>
       <ul>
-        <li><a href="./">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./partners.html">Partner Program</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-        <li><a href="./legal.html">Legal</a></li>
+        <li><button onclick="showPage('home')">Home</button></li>
+        <li><button onclick="showPage('about')">About</button></li>
+        <li><button onclick="showPage('contact')">Contact</button></li>
+        <li><button onclick="showPage('privacy')">Legal</button></li>
       </ul>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Categories</div>
       <ul>
-        <li><a href="./ai-tools.html">AI Tools</a></li>
-        <li><a href="./marketing.html">Marketing</a></li>
-        <li><a href="./wellness.html">Wellness</a></li>
-        <li><a href="./content.html">Content</a></li>
-        <li><a href="./saas.html">SaaS</a></li>
-        <li><a href="./make-money.html">Make Money</a></li>
+        <li><button onclick="showPage('ai')">AI Tools</button></li>
+        <li><button onclick="showPage('marketing')">Marketing</button></li>
+        <li><button onclick="showPage('wellness')">Wellness</button></li>
+        <li><button onclick="showPage('content')">Content</button></li>
+        <li><button onclick="showPage('saas')">SaaS</button></li>
+        <li><button onclick="showPage('money')">Make Money</button></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -3354,238 +2874,15 @@ https://whatuprehan.github.io/thepicklist/?ref=YOURCODE</div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 The Pick List — Independent Reviews You Can Trust</div>
     <div class="footer-legal">
-      <a href="./legal.html">Privacy Policy</a>
-      <a href="./legal.html">Affiliate Disclaimer</a>
-      <a href="./legal.html">Earnings Disclaimer</a>
-      <a href="./partners.html">Partner Program</a>
+      <button onclick="showPage('privacy')">Privacy Policy</button>
+      <button onclick="showPage('privacy')">Affiliate Disclaimer</button>
+      <button onclick="showPage('privacy')">Earnings Disclaimer</button>
     </div>
   </div>
 </footer>
 
-<script src="./config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// Email forms stored in Supabase
-
-function readRuntimeConfig() {
-  var cfg = window.__PICKLIST_CONFIG__ || {};
-  var lsUrl = null;
-  var lsKey = null;
-  try {
-    lsUrl = localStorage.getItem('picklist.supabase.url');
-    lsKey = localStorage.getItem('picklist.supabase.anonKey');
-  } catch(e) {}
-  return {
-    SUPABASE_URL: cfg.SUPABASE_URL || lsUrl || '',
-    SUPABASE_ANON_KEY: cfg.SUPABASE_ANON_KEY || lsKey || ''
-  };
-}
-
-var RUNTIME_CONFIG = readRuntimeConfig();
-var SUPABASE_URL = RUNTIME_CONFIG.SUPABASE_URL;
-var SUPABASE_ANON_KEY = RUNTIME_CONFIG.SUPABASE_ANON_KEY;
-var db = null;
-var dbReady = false;
-
-function initSupabase() {
-  dbReady = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase);
-  if(dbReady) db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  return dbReady;
-}
-
-async function verifySupabaseSchema() {
-  if(!dbReady) initSupabase();
-  if(!dbReady) return false;
-  var result = await db.from('products').select('slug').limit(1);
-  if(result.error) {
-    return false;
-  }
-  return true;
-}
-
-function getFormData(form) {
-  var data = {};
-  new FormData(form).forEach(function(value, key){ data[key] = String(value).trim(); });
-  return data;
-}
-
-function escapeHtml(value) {
-  return String(value == null ? '' : value).replace(/[&<>"']/g, function(ch){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
-  });
-}
-
-function ratingStars(rating) {
-  var full = Math.round(Number(rating || 0));
-  var out = '';
-  for(var i=1;i<=5;i++) out += i <= full ? '★' : '☆';
-  return out;
-}
-
-function tierForReferrals(count) {
-  count = Number(count || 0);
-  if(count > 50) return {tier:'Elite', cut:40};
-  if(count >= 11) return {tier:'Pro', cut:30};
-  return {tier:'Starter', cut:20};
-}
-
-function productCardHtml(p) {
-  var page = p.page_id || ('prod-' + p.slug);
-  var badge = p.badge ? '<span class="badge ' + escapeHtml(p.badge_color || 'b-yellow') + '">' + escapeHtml(p.badge) + '</span>' : '';
-  var secondary = p.secondary_url ? '<a href="' + escapeHtml(p.secondary_url) + '" target="_blank" rel="noopener" class="tool-btn tool-btn-alt">' + escapeHtml(p.secondary_cta || 'More') + '</a>' : '';
-  var guarantee = p.guarantee ? '<span class="tool-guarantee">' + escapeHtml(p.guarantee) + '</span>' : '';
-  return '<div class="tool-card reveal" onclick="showPage(&quot;' + escapeHtml(page) + '&quot;)" style="cursor:pointer;">' +
-    badge +
-    '<div class="tool-num">' + String(p.rank || '').padStart(2,'0') + '</div>' +
-    '<div><div class="tool-name">' + escapeHtml(p.name) + ' <span class="tool-tag">' + escapeHtml(p.tagline || p.category_slug || '') + '</span></div>' +
-    '<p class="tool-desc">' + escapeHtml(p.description) + '</p></div>' +
-    '<div class="tool-action">' +
-    '<a href="' + escapeHtml(p.primary_url) + '" target="_blank" rel="noopener" class="tool-btn">' + escapeHtml(p.primary_cta || 'Learn More') + '</a>' +
-    secondary +
-    '<div style="display:flex;align-items:center;gap:3px;"><span class="stars">' + ratingStars(p.rating) + ' </span><span class="rating-num">' + escapeHtml(p.rating || '') + '/5</span></div>' +
-    guarantee +
-    '</div></div>';
-}
-
-function compareRowHtml(p) {
-  return '<tr><td class="td-name">' + escapeHtml(p.name) + '</td><td>' + escapeHtml(p.category_slug || '') + '</td><td><span class="check">' + escapeHtml(p.guarantee || 'Listed') + '</span></td><td style="color:var(--mid);font-size:11px;">' + escapeHtml(p.best_for || '') + '</td></tr>';
-}
-
-async function loadPublicProducts() {
-  if(!initSupabase()) return;
-  var result = await db.from('products').select('*').eq('is_active', true).eq('status', 'approved').order('rank', { ascending: true });
-  if(result.error || !result.data || !result.data.length) {
-    verifySupabaseSchema();
-    return;
-  }
-  var grid = document.querySelector('#picks .tools-grid');
-  if(grid) {
-    grid.innerHTML = result.data.map(productCardHtml).join('');
-    grid.querySelectorAll('.tool-action').forEach(function(el){ el.addEventListener('click', function(e){ e.stopPropagation(); }); });
-  }
-  var compareBody = document.querySelector('.compare-table tbody');
-  if(compareBody) compareBody.innerHTML = result.data.map(compareRowHtml).join('');
-  aiProducts = result.data.map(function(p){
-    return {name:p.name, icon:'•', cat:p.category_slug || '', page:p.page_id || ('prod-' + p.slug), url:p.primary_url, keywords:p.keywords || []};
-  }).concat(aiProducts);
-}
-
-async function trackReferralClick() {
-  if(!dbReady) initSupabase();
-  if(!dbReady) return;
-  var params = new URLSearchParams(window.location.search);
-  var code = params.get('ref');
-  if(!code) return;
-  await db.from('referral_clicks').insert({
-    partner_code: code,
-    landing_page: window.location.href,
-    referrer: document.referrer || null,
-    user_agent: navigator.userAgent || null
-  });
-}
-
-function copyTextToClipboard(text, btn) {
-  function done() {
-    if(!btn) return;
-    var old = btn.textContent;
-    btn.textContent = 'Copied';
-    setTimeout(function(){btn.textContent = old;}, 1600);
-  }
-  if(navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text).then(done).catch(function(){fallbackCopy(text);done();});
-  } else {
-    fallbackCopy(text);
-    done();
-  }
-}
-
-function fallbackCopy(text) {
-  var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.setAttribute('readonly', '');
-  ta.style.position = 'fixed';
-  ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand('copy'); } catch(e) {}
-  document.body.removeChild(ta);
-}
-
-function copyKit(id, btn) {
-  var el = document.getElementById(id);
-  if(el) copyTextToClipboard(el.textContent.trim(), btn);
-}
-
-function buildPartnerLink() {
-  var input = document.getElementById('partner-code');
-  var output = document.getElementById('partner-link-output');
-  if(!input || !output) return;
-  var code = (input.value || 'YOURCODE').trim().replace(/[^a-zA-Z0-9_-]/g, '') || 'YOURCODE';
-  output.textContent = 'https://whatuprehan.github.io/thepicklist/?ref=' + encodeURIComponent(code) + '&utm_source=partner&utm_medium=affiliate&utm_campaign=partner_program';
-}
-
-function copyPartnerLink(btn) {
-  buildPartnerLink();
-  var output = document.getElementById('partner-link-output');
-  if(output) copyTextToClipboard(output.textContent.trim(), btn);
-}
-
-function partnerBannerSvg(title, subtitle, wide) {
-  var width = wide ? 1200 : 1080;
-  var height = wide ? 628 : 1080;
-  var safeTitle = title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  var safeSub = subtitle.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  return '<svg xmlns="http://www.w3.org/2000/svg" width="' + width + '" height="' + height + '" viewBox="0 0 ' + width + ' ' + height + '"><rect width="100%" height="100%" fill="#080808"/><g opacity=".16" stroke="#F5C518" stroke-width="2"><path d="M' + (width-240) + ' 70l170 54-54 170-170-54z"/><path d="M' + (width-380) + ' ' + (height-260) + 'l250 80-80 250-250-80z"/></g><circle cx="' + (width-150) + '" cy="120" r="180" fill="#F5C518" opacity=".08"/><text x="64" y="86" fill="#F5C518" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="6">THE PICK LIST</text><text x="64" y="' + (wide ? 290 : 430) + '" fill="#F5F0E8" font-family="Arial Black, Impact, sans-serif" font-size="' + (wide ? 78 : 92) + '" font-weight="900">' + safeTitle + '</text><text x="64" y="' + (wide ? 382 : 548) + '" fill="#F5C518" font-family="Arial Black, Impact, sans-serif" font-size="' + (wide ? 70 : 82) + '" font-weight="900">' + safeSub + '</text><rect x="64" y="' + (height-150) + '" width="264" height="54" fill="#F5C518"/><text x="92" y="' + (height-115) + '" fill="#080808" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">BROWSE PICKS</text><text x="64" y="' + (height-58) + '" fill="#888888" font-family="Arial, sans-serif" font-size="20">whatuprehan.github.io/thepicklist</text></svg>';
-}
-
-function downloadSvg(name, svg) {
-  var blob = new Blob([svg], {type:'image/svg+xml'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url;
-  a.download = name;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function downloadPartnerBanners(btn) {
-  downloadSvg('thepicklist-banner-wide.svg', partnerBannerSvg('FIND THE RIGHT', 'TOOL FASTER', true));
-  downloadSvg('thepicklist-banner-square.svg', partnerBannerSvg('STOP GUESSING', 'PICK BETTER', false));
-  if(btn) {
-    var old = btn.textContent;
-    btn.textContent = 'Downloaded';
-    setTimeout(function(){btn.textContent = old;}, 1800);
-  }
-}
-
-async function handlePartnerApply(e) {
-  e.preventDefault();
-  var btn = e.target.querySelector('button[type="submit"]');
-  var old = btn.textContent;
-  btn.textContent = 'Saving...';
-  btn.disabled = true;
-  if(!dbReady) initSupabase();
-  if(!dbReady) {
-    btn.textContent = 'Connect Supabase First';
-    btn.style.background = '#ef4444';
-    setTimeout(function(){btn.textContent=old;btn.style.background='';btn.disabled=false;}, 2800);
-    return;
-  }
-  var data = getFormData(e.target);
-  var result = await db.from('partner_applications').insert(data);
-  if(result.error) {
-    btn.textContent = 'Save Failed';
-    btn.style.background = '#ef4444';
-  } else {
-    btn.textContent = 'Application Saved';
-    btn.style.background = '#22c55e';
-    btn.style.color = '#fff';
-    e.target.reset();
-  }
-  setTimeout(function(){btn.textContent=old;btn.style.background='';btn.style.color='';btn.disabled=false;}, 3200);
-}
+// Email forms powered by Kit (ConvertKit)
 
 // ── AI SUGGESTER ──────────────────────────────────────────────────────────────
 var aiProducts = [
@@ -3708,44 +3005,55 @@ document.addEventListener('DOMContentLoaded', function() {
   if (inp) inp.addEventListener('keydown', function(e){ if(e.key==='Enter') runAiSuggest(); });
 });
 
-async function handleEmailSignup(e, form) {
+// EMAIL FORM SUBMIT — uses hidden iframe to POST to ConvertKit (bypasses CORS)
+var kitIframe = null;
+function kitSubmit(e, form) {
   e.preventDefault();
   var emailInput = form.querySelector('input[type="email"]');
   var btn = form.querySelector('button[type="submit"]');
   var email = emailInput.value.trim();
   if (!email) return;
   var origHTML = btn.innerHTML;
-  btn.innerHTML = '<span>Saving...</span>';
+  btn.innerHTML = '<span>Sending...</span>';
   btn.disabled = true;
-  if(!dbReady) initSupabase();
-  if(!dbReady) {
-    btn.innerHTML = '<span>Connect Supabase First</span>';
-    btn.style.background = '#ef4444';
+
+  // Remove old iframe if exists
+  if (kitIframe) kitIframe.parentNode && kitIframe.parentNode.removeChild(kitIframe);
+
+  // Create hidden iframe as the form target
+  kitIframe = document.createElement('iframe');
+  kitIframe.name = 'kit_iframe_' + Date.now();
+  kitIframe.style.display = 'none';
+  document.body.appendChild(kitIframe);
+
+  // Create a real form that targets the iframe
+  var postForm = document.createElement('form');
+  postForm.method = 'POST';
+  postForm.action = 'https://app.kit.com/forms/9391291/subscriptions';
+  postForm.target = kitIframe.name;
+  postForm.style.display = 'none';
+
+  var emailField = document.createElement('input');
+  emailField.type = 'hidden';
+  emailField.name = 'email_address';
+  emailField.value = email;
+  postForm.appendChild(emailField);
+
+  document.body.appendChild(postForm);
+  postForm.submit();
+  document.body.removeChild(postForm);
+
+  // Show success after short delay
+  setTimeout(function() {
+    btn.innerHTML = '<span>✓ You\'re in!</span>';
+    btn.style.background = '#22c55e';
+    emailInput.value = '';
     setTimeout(function() {
       btn.innerHTML = origHTML;
       btn.style.background = '';
       btn.disabled = false;
-    }, 2600);
-    return;
-  }
-  var source = (form && form.getAttribute('data-source')) || 'website';
-  var result = await db.from('newsletter_subscribers').insert(
-    { email: email, source: source, status: 'active' }
-  );
-  var duplicate = result.error && result.error.code === '23505';
-  if(result.error && !duplicate) {
-    btn.innerHTML = '<span>Save Failed</span>';
-    btn.style.background = '#ef4444';
-  } else {
-    btn.innerHTML = '<span>✓ You\'re in!</span>';
-    btn.style.background = '#22c55e';
-    emailInput.value = '';
-  }
-  setTimeout(function() {
-    btn.innerHTML = origHTML;
-    btn.style.background = '';
-    btn.disabled = false;
-  }, 3200);
+    }, 3500);
+  }, 800);
 }
 
 // Prevent clicks on links/buttons inside .tool-action from triggering the parent tool-card's showPage()
@@ -3753,20 +3061,15 @@ document.querySelectorAll('.tool-action').forEach(function(el) {
   el.addEventListener('click', function(e) { e.stopPropagation(); });
 });
 
-// Admin management logic removed from public site.
-
 // PAGE NAV
 function showPage(name) {
-  if(name === 'admin') name = 'home';
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   var target = document.getElementById(name) || document.getElementById('page-'+name) || document.getElementById('prod-'+name);
   if(!target) return;
   target.classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.nav-links button').forEach(function(b){b.classList.remove('active');});
   var nb = document.getElementById('nav-'+name);
   if(nb) nb.classList.add('active');
-  var sticky = document.getElementById('stickyBar');
-  if(sticky) sticky.style.display = name === 'partners' ? 'none' : '';
   window.scrollTo({top:0,behavior:'instant'});
   setTimeout(function(){
     target.querySelectorAll('.reveal').forEach(function(el){
@@ -3775,43 +3078,15 @@ function showPage(name) {
   }, 80);
 }
 
-function showInitialPageFromUrl() {
-  var params = new URLSearchParams(window.location.search);
-  var requested = params.get('page') || (window.location.hash ? window.location.hash.slice(1) : '');
-  if(requested) {
-    requested = requested.replace(/^page-/, '');
-    if(requested === 'admin') requested = 'home';
-    showPage(requested);
-  }
-}
-showInitialPageFromUrl();
-
 function toggleMenu() {document.getElementById('mobileMenu').classList.toggle('open');}
 
-async function handleContact(e) {
+function handleContact(e) {
   e.preventDefault();
   var btn = e.target.querySelector('button[type="submit"]');
-  var old = btn.textContent;
-  btn.textContent = 'Saving...';
-  btn.disabled = true;
-  if(!dbReady) initSupabase();
-  if(!dbReady) {
-    btn.textContent = 'Connect Supabase First';
-    btn.style.background = '#ef4444';
-    setTimeout(function(){btn.textContent=old;btn.style.background='';btn.disabled=false;}, 2800);
-    return;
-  }
-  var result = await db.from('contact_messages').insert(getFormData(e.target));
-  if(result.error) {
-    btn.textContent = 'Save Failed';
-    btn.style.background = '#ef4444';
-  } else {
-    btn.textContent = 'Message Saved';
-    btn.style.background = '#22c55e';
-    btn.style.color = '#fff';
-    e.target.reset();
-  }
-  setTimeout(function(){btn.textContent=old;btn.style.background='';btn.style.color='';btn.disabled=false;}, 3000);
+  btn.textContent = 'Message Sent!';
+  btn.style.background = '#22c55e';
+  btn.style.color = '#fff';
+  setTimeout(function(){btn.textContent='Send Message';btn.style.background='';btn.style.color='';e.target.reset();}, 3000);
 }
 
 function toggleFaq(btn) {
@@ -4010,13 +3285,6 @@ function quizReset() {
   var el = document.getElementById('qs-0');
   el.classList.remove('active'); void el.offsetWidth; el.classList.add('active');
 }
-
-document.addEventListener('DOMContentLoaded', function(){
-  initSupabase();
-  verifySupabaseSchema();
-  loadPublicProducts();
-  trackReferralClick();
-});
 
 </script>
 </body>
