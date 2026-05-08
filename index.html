@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Pick List — Top Rated Tools & Products For Every Need</title>
 <meta name="description" content="Independent reviews of the best tools, products and programs across every category. Trusted picks for AI, wellness, marketing, business and more.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><circle cx='50' cy='50' r='18' fill='%23F5C5[...]
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><circle cx='50' cy='50' r='18' fill='%23F5C518'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--black:#080808;--dark:#101010;--dark2:#181818;--dark3:#222;--yellow:#F5C518;--yellow2:#e6b800;--ydim:rgba(245,197,24,0.1);--yborder:rgba(245,197,24,0.22);--white:#F5F0E8;--gray:#555;--mid:#777;--border:rgba(255,255,255,0.08);--red:#EF4444;--green:#22C55E;--blue:#3B82F6;}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
-::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--yellow);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;}::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--yellow);}
 .page{display:none;min-height:100vh;}.page.active{display:block;}
 
 /* TICKER */
@@ -32,58 +30,248 @@ nav{position:fixed;top:34px;left:0;right:0;z-index:1000;display:flex;align-items
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:98px 60px 40px;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:50px 50px;}
+.hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(245,197,24,0.07) 0%,transparent 65%);pointer-events:none;}
 .hero-inner{position:relative;z-index:1;max-width:960px;width:100%;text-align:center;}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,10vw,110px);line-height:0.9;letter-spacing:3px;margin-bottom:22px;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--yborder);background:var(--ydim);color:var(--yellow);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px 16px;border-radius:24px;margin-bottom:22px;}
+.hero-tag span{width:5px;height:5px;background:var(--yellow);border-radius:50%;animation:blink 1.5s infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,10vw,110px);line-height:0.9;letter-spacing:3px;margin-bottom:22px;animation:fadeUp 0.7s ease 0.15s both;}
 .hero h1 em{color:var(--yellow);font-style:normal;}
-.hero-sub{font-size:16px;color:var(--mid);line-height:1.8;max-width:520px;margin:0 auto 28px;font-weight:300;}
+.hero-sub{font-size:16px;color:var(--mid);line-height:1.8;max-width:520px;margin:0 auto 14px;font-weight:300;animation:fadeUp 0.7s ease 0.25s both;}
+.hero-proof{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(245,197,24,0.7);text-transform:uppercase;margin-bottom:28px;animation:fadeUp 0.7s ease 0.3s both;}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.42s both;margin-bottom:56px;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;border-radius:4px;transition:all 0.2s;}
+.btn-yellow{background:var(--yellow);color:var(--black);}
+.btn-yellow:hover{background:var(--yellow2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,197,24,0.25);}
+.btn-outline{background:transparent;color:var(--white);border:1px solid var(--border);}
+.btn-outline:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-2px);}
+.hero-stats{display:flex;justify-content:center;border-top:1px solid var(--border);animation:fadeUp 0.7s ease 0.48s both;}
+.stat-item{text-align:center;padding:22px 36px;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--yellow);display:block;line-height:1;}
+.stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-top:4px;display:block;}
 
-footer{background:var(--dark);border-top:1px solid var(--border);padding:48px 60px 28px;text-align:center;}
-footer p{color:var(--mid);font-size:12px;font-weight:300;}
+/* PICKS SECTION */
+section{padding:76px 60px;position:relative;}
+.sec-head{max-width:1200px;margin:0 auto 36px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.section-label::after{content:'';flex:1;max-width:48px;height:1px;background:var(--yellow);opacity:0.4;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,52px);letter-spacing:2px;line-height:1;margin-bottom:10px;}
+.section-title em{color:var(--yellow);font-style:normal;}
+.section-sub{color:var(--mid);font-size:14px;line-height:1.7;max-width:500px;font-weight:300;}
+
+/* TOOL CARDS */
+.tools-wrap{max-width:1200px;margin:0 auto;width:100%;}
+.tools-grid{display:flex;flex-direction:column;gap:2px;}
+.tool-card{background:var(--dark);border:1px solid rgba(255,255,255,0.10);display:grid;grid-template-columns:52px 1fr;align-items:start;gap:16px;padding:22px 28px;transition:all 0.25s;position:relative;}
+.tool-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--yellow);transform:scaleY(0);transform-origin:bottom;transition:transform 0.3s;}
+.tool-card:hover{background:var(--dark2);border-color:var(--yborder);transform:translateX(3px);}
+.tool-card:hover::before{transform:scaleY(1);}
+.badge{position:absolute;top:9px;right:9px;font-family:'DM Mono',monospace;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;font-weight:600;}
+.b-yellow{background:var(--yellow);color:var(--black);}
+.b-red{background:var(--red);color:#fff;}
+.b-blue{background:var(--blue);color:#fff;}
+.b-green{background:var(--green);color:#000;}
+.b-purple{background:#8b5cf6;color:#fff;}
+.tool-num{font-family:'Bebas Neue',sans-serif;font-size:34px;color:rgba(255,255,255,0.08);line-height:1;user-select:none;transition:color 0.25s;}
+.tool-num .tn-digit{color:var(--yellow);opacity:0.75;}
+.tool-card:hover .tool-num{color:rgba(255,255,255,0.05);}
+.tool-card:hover .tool-num .tn-digit{opacity:1;}
+.tool-card:hover .tool-num{color:rgba(245,197,24,0.1);}
+.tool-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;margin-bottom:4px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;line-height:1.1;}
+.tool-tag{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;background:var(--ydim);border:1px solid var(--yborder);color:var(--yellow);padding:2px 7px;}
+.tool-desc{color:var(--mid);font-size:12.5px;line-height:1.62;font-weight:300;max-width:520px;}
+.tool-action{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);grid-column:2;width:100%;}
+.tool-btn{display:inline-flex;align-items:center;gap:4px;background:transparent;border:1px solid var(--border);color:var(--white);padding:7px 12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.tool-btn:hover{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
+.tool-btn-alt{border-color:var(--yborder);color:var(--yellow);font-size:8px;}
+.tool-btn-alt:hover{background:var(--yellow);color:var(--black);}
+.stars{color:var(--yellow);font-size:9px;letter-spacing:1px;}
+.rating-num{font-family:'DM Mono',monospace;font-size:8px;color:var(--mid);}
+.tool-free{font-family:'DM Mono',monospace;font-size:8px;color:var(--green);text-transform:uppercase;}
+.tool-hot{font-family:'DM Mono',monospace;font-size:8px;color:#f59e0b;text-transform:uppercase;}
+.tool-guarantee{font-family:'DM Mono',monospace;font-size:8px;color:var(--blue);text-transform:uppercase;}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1fr;gap:36px;padding:48px 60px 28px;max-width:1200px;margin:0 auto;text-align:center;}
+.footer-tagline{color:var(--mid);font-size:12px;font-weight:300;line-height:1.6;}
 
 @media(max-width:960px){
   nav{padding:0 18px;}
-  .hero{padding:98px 18px 34px;}
   section{padding:56px 18px;}
+  .hero{padding:98px 18px 34px;}
+  .hero-stats{flex-wrap:wrap;}
+  .stat-item{padding:14px 18px;flex:1 1 40%;}
+  .footer-top{padding:32px 18px 22px;}
 }
+
+@media(max-width:480px){
+  .stat-item{flex:1 1 45%;padding:12px 14px;}
+  .tool-card{grid-template-columns:34px 1fr;gap:10px;padding:14px 13px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.14);}
+  .tool-card:hover{transform:none;}
+  .tool-num{font-size:18px;}
+  .tool-name{font-size:15px;}
+  .tool-desc{font-size:11.5px;}
+  .tool-btn{font-size:7.5px;padding:6px 8px;}
+  .badge{font-size:6px;padding:2px 6px;top:8px;right:8px;}
+}
+
+.reveal{opacity:1;}
 </style>
 </head>
 <body>
 
 <!-- TICKER -->
 <div class="ticker-wrap"><div class="ticker-track">
-  <div class="ticker-item">The Pick List — Updated May 2026 — Independent Reviews</div>
-  <div class="ticker-item">Verified Tools & Products · Zero Bias · Real Results</div>
-  <div class="ticker-item">The Pick List — Updated May 2026 — Independent Reviews</div>
-  <div class="ticker-item">Verified Tools & Products · Zero Bias · Real Results</div>
+  <div class="ticker-item">ClickFunnels · Build Funnels That Convert</div>
+  <div class="ticker-item">Tesla MedBed X · Advanced Wellness Technology</div>
+  <div class="ticker-item">TPP System · Transform Your Financial Future</div>
+  <div class="ticker-item">CustomGPT · Your Own AI Business Brain</div>
+  <div class="ticker-item">Frase.io · Content That Ranks On Google</div>
+  <div class="ticker-item">LiveChat · Turn Visitors Into Customers</div>
+  <div class="ticker-item">QC System · Quantum Computing Education</div>
+  <div class="ticker-item">Repurpose.io · One Video, Every Platform</div>
+  <div class="ticker-item">Independent Reviews. Zero Bias. Real Results.</div>
+  <div class="ticker-item">ClickFunnels · Build Funnels That Convert</div>
+  <div class="ticker-item">Tesla MedBed X · Advanced Wellness Technology</div>
+  <div class="ticker-item">TPP System · Transform Your Financial Future</div>
+  <div class="ticker-item">CustomGPT · Your Own AI Business Brain</div>
+  <div class="ticker-item">Frase.io · Content That Ranks On Google</div>
+  <div class="ticker-item">LiveChat · Turn Visitors Into Customers</div>
+  <div class="ticker-item">QC System · Quantum Computing Education</div>
+  <div class="ticker-item">Repurpose.io · One Video, Every Platform</div>
+  <div class="ticker-item">Independent Reviews. Zero Bias. Real Results.</div>
 </div></div>
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#home"><span class="logo-dot"></span>THE PICK LIST</a>
+  <a class="logo"><span class="logo-dot"></span>THE PICK LIST</a>
   <ul class="nav-links">
-    <li><button onclick="alert('Coming soon!')">About</button></li>
-    <li><button onclick="alert('Coming soon!')">Contact</button></li>
+    <li><button>Home</button></li>
+    <li><button>About</button></li>
+    <li><button>Contact</button></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero">
+  <div class="hero-grid"></div><div class="hero-glow"></div>
   <div class="hero-inner">
+    <div class="hero-tag"><span></span>Updated May 2026 · Verified and Independent</div>
     <h1>THE BEST TOOLS AND<br>PRODUCTS FOR <em>EVERY</em><br>NEED</h1>
-    <p class="hero-sub">Independent reviews of the best tools, products and software across every category. Trusted picks for AI, wellness, marketing, business and more.</p>
-    <p style="color:var(--green);font-size:14px;margin-top:20px;">✅ Site is loading correctly!</p>
+    <p class="hero-sub">We research hundreds of products across every niche so you do not have to. Only the ones that actually deliver make the list.</p>
+    <p class="hero-proof">Trusted by 10,000 plus entrepreneurs, marketers and creators</p>
+    <div class="hero-btns">
+      <a href="#picks" class="btn btn-yellow">Browse All Picks</a>
+      <button class="btn btn-outline">How We Pick</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">12+</span><span class="stat-label">Vetted Products</span></div>
+      <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Niches</span></div>
+      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Independent</span></div>
+      <div class="stat-item"><span class="stat-num">2026</span><span class="stat-label">Updated</span></div>
+    </div>
   </div>
+</section>
+
+<!-- ALL PICKS -->
+<section class="picks-section" id="picks">
+  <div class="sec-head reveal">
+    <div class="section-label">The Full List</div>
+    <h2 class="section-title">ALL TOP PICKS · 2026</h2>
+    <p class="section-sub">Every product we recommend, ranked and reviewed. Most have a free trial or money-back guarantee.</p>
+  </div>
+  <div class="tools-wrap"><div class="tools-grid">
+
+    <div class="tool-card reveal">
+      <span class="badge b-yellow">Editor's Pick</span>
+      <div class="tool-num">0<span class="tn-digit">1</span></div>
+      <div><div class="tool-name">ClickFunnels <span class="tool-tag">Marketing</span></div>
+      <p class="tool-desc">The reason 100,000 plus online businesses actually make sales. A website looks good · a funnel makes money.</p>
+      <div class="tool-action">
+        <a href="https://www.clickfunnels.com" target="_blank" class="tool-btn">Start Free Trial</a>
+        <div style="display:flex;align-items:center;gap:3px;"><span class="stars">★★★★★ </span><span class="rating-num">4.8/5</span></div>
+        <span class="tool-free">Free Trial Available</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="tool-card reveal">
+      <span class="badge b-purple">Wellness Pick</span>
+      <div class="tool-num">0<span class="tn-digit">2</span></div>
+      <div><div class="tool-name">Tesla MedBed X <span class="tool-tag">Wellness</span></div>
+      <p class="tool-desc">Advanced full-body wellness system combining PEMF therapy, red light therapy, far infrared heat and more.</p>
+      <div class="tool-action">
+        <a href="https://www.teslameds.com" target="_blank" class="tool-btn">Learn More</a>
+        <div style="display:flex;align-items:center;gap:3px;"><span class="stars">★★★★★ </span><span class="rating-num">4.9/5</span></div>
+        <span class="tool-guarantee">60-Day Money Back</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="tool-card reveal">
+      <span class="badge b-green">Top Rated</span>
+      <div class="tool-num">0<span class="tn-digit">3</span></div>
+      <div><div class="tool-name">TPP System <span class="tool-tag">Make Money</span></div>
+      <p class="tool-desc">A comprehensive wealth transformation program combining mindset training with practical investment strategies.</p>
+      <div class="tool-action">
+        <a href="https://www.tppsystem.com" target="_blank" class="tool-btn">Get Started</a>
+        <div style="display:flex;align-items:center;gap:3px;"><span class="stars">★★★★★ </span><span class="rating-num">4.6/5</span></div>
+        <span class="tool-guarantee">60-Day Money Back</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="tool-card reveal">
+      <span class="badge b-blue">AI Pick</span>
+      <div class="tool-num">0<span class="tn-digit">4</span></div>
+      <div><div class="tool-name">CustomGPT <span class="tool-tag">AI Tools</span></div>
+      <p class="tool-desc">Build your own AI assistant trained on your business data. Customer support, sales FAQs, automated 24/7.</p>
+      <div class="tool-action">
+        <a href="https://customgpt.ai" target="_blank" class="tool-btn">Try Free</a>
+        <div style="display:flex;align-items:center;gap:3px;"><span class="stars">★★★★★ </span><span class="rating-num">4.7/5</span></div>
+        <span class="tool-free">Free Trial</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="tool-card reveal">
+      <span class="badge b-red">Trending</span>
+      <div class="tool-num">0<span class="tn-digit">5</span></div>
+      <div><div class="tool-name">Frase.io <span class="tool-tag">Content SEO</span></div>
+      <p class="tool-desc">Researches, outlines and writes content that actually ranks on Google. Analyzes top results for your keyword.</p>
+      <div class="tool-action">
+        <a href="https://www.frase.io" target="_blank" class="tool-btn">Try Free</a>
+        <div style="display:flex;align-items:center;gap:3px;"><span class="stars">★★★★★ </span><span class="rating-num">4.9/5</span></div>
+        <span class="tool-free">Free Trial</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="tool-card reveal">
+      <div class="tool-num">0<span class="tn-digit">6</span></div>
+      <div><div class="tool-name">LiveChat <span class="tool-tag">SaaS</span></div>
+      <p class="tool-desc">Real-time chat that turns visitors into customers. Captures leads automatically when offline.</p>
+      <div class="tool-action">
+        <a href="https://www.livechat.com" target="_blank" class="tool-btn">Try Free</a>
+        <div style="display:flex;align-items:center;gap:3px;"><span class="stars">★★★★★ </span><span class="rating-num">4.8/5</span></div>
+        <span class="tool-free">14-Day Free Trial</span>
+      </div>
+      </div>
+    </div>
+
+  </div></div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 The Pick List. All rights reserved.</p>
-  <p style="margin-top:10px;">Built with independent reviews. Supabase integration in progress.</p>
+  <div class="footer-top">
+    <p class="footer-tagline">&copy; 2026 The Pick List. Independent reviews of the best tools and products. All rights reserved.</p>
+  </div>
 </footer>
 
-<script>
-console.log("✅ Page loaded successfully");
-console.log("Supabase config available:", window.__PICKLIST_CONFIG__ ? "Yes" : "No");
-</script>
+<script src="config.js"></script>
 </body>
 </html>
